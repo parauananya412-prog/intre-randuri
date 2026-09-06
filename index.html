@@ -1,1836 +1,1997 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Între Rânduri — Editură</title>
+    <title>Între Rânduri — Editură</title>
+    <meta name="description" content="Între Rânduri — locul unde poveștile prind viață. Descoperă autori, cărți și povești noi.">
 
-<style>
+    <style>
 
-/* =========================================================
-   PALETĂ
-========================================================= */
+        /* =========================
+           PALETĂ
+        ========================== */
 
-:root {
-    --black: #030511;
-    --night: #06091a;
-    --navy: #0a1230;
-    --blue: #182b63;
-    --blue-light: #5277d8;
+        :root {
+            --black: #04050c;
+            --black-soft: #080b18;
 
-    --purple: #321d5c;
-    --purple-light: #8063c7;
-    --lavender: #b9a5e8;
+            --navy: #0b1430;
+            --navy-light: #142653;
 
-    --gold: #d7b65c;
-    --gold-light: #f3d98b;
+            --blue: #315db4;
+            --blue-light: #7295e8;
 
-    --white: #ffffff;
-    --white-soft: #dfe5f4;
-    --text: #aeb8d0;
+            --purple: #4c327c;
+            --purple-light: #a88ad8;
+            --lavender: #d8c9f3;
 
-    --border: rgba(215,182,92,.28);
-}
+            --gold: #d8b765;
+            --gold-light: #f1d995;
 
+            --white: #ffffff;
+            --white-soft: #d9dce8;
 
-/* =========================================================
-   RESET
-========================================================= */
+            --line: rgba(216, 183, 101, 0.35);
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
 
-html {
-    scroll-behavior: smooth;
-}
 
-body {
-    background: var(--black);
-    color: var(--white);
-    font-family: Georgia, "Times New Roman", serif;
-    overflow-x: hidden;
-}
+        /* =========================
+           RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at 20% 10%, rgba(76, 50, 124, 0.25), transparent 30%),
+                radial-gradient(circle at 80% 30%, rgba(49, 93, 180, 0.18), transparent 35%),
+                linear-gradient(180deg, #03040a, #080d1c 45%, #090615 100%);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
 
+        /* =========================
+           STELUȚE
+        ========================== */
 
-/* =========================================================
-   PRAF DE STELE GLOBAL
-========================================================= */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 999;
+            background-image:
+                radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+                radial-gradient(circle, rgba(216,183,101,.55) 1px, transparent 1px),
+                radial-gradient(circle, rgba(168,138,216,.45) 1px, transparent 1px);
 
-    background-image:
-        radial-gradient(circle, rgba(255,255,255,.85) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(215,182,92,.7) 1px, transparent 1.5px),
-        radial-gradient(circle, rgba(155,137,255,.7) 1px, transparent 1.5px);
+            background-size: 120px 120px, 190px 190px, 260px 260px;
+            background-position: 20px 40px, 70px 100px, 120px 20px;
 
-    background-size:
-        190px 190px,
-        260px 260px,
-        330px 330px;
+            opacity: .28;
+        }
 
-    background-position:
-        20px 30px,
-        100px 150px,
-        170px 80px;
 
-    opacity: .27;
-}
+        /* =========================
+           HEADER
+        ========================== */
 
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(4, 5, 12, 0.82);
+            backdrop-filter: blur(15px);
 
-/* =========================================================
-   HEADER
-========================================================= */
+            border-bottom: 1px solid rgba(216,183,101,.18);
+        }
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
+        .navbar {
+            max-width: 1250px;
+            margin: auto;
 
-    width: 100%;
+            min-height: 78px;
+            padding: 0 25px;
 
-    z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
 
-    padding: 20px 7%;
+        .logo {
+            color: var(--gold-light);
+            font-size: 1.65rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            white-space: nowrap;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+            text-shadow:
+                0 0 15px rgba(216,183,101,.25);
+        }
 
-    background: rgba(3,5,17,.88);
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
 
-    backdrop-filter: blur(18px);
+        nav a {
+            color: var(--white-soft);
+            font-size: .95rem;
+            transition: .3s ease;
+        }
 
-    border-bottom: 1px solid var(--border);
-}
+        nav a:hover {
+            color: var(--gold-light);
+        }
 
-.logo {
-    color: white;
 
-    font-size: 21px;
+        /* =========================
+           COȘ HEADER
+        ========================== */
 
-    letter-spacing: 5px;
+        .cart-button {
+            border: 1px solid rgba(216,183,101,.5);
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(76,50,124,.35),
+                    rgba(20,38,83,.55)
+                );
 
-    white-space: nowrap;
-}
+            color: var(--gold-light);
 
-.logo span {
-    color: var(--gold-light);
-}
+            padding: 10px 15px;
+            border-radius: 30px;
 
-nav {
-    display: flex;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            cursor: pointer;
 
-    align-items: center;
+            transition: .3s ease;
+
+            box-shadow:
+                0 0 20px rgba(76,50,124,.15);
+        }
+
+        .cart-button:hover {
+            transform: translateY(-2px);
+
+            border-color: var(--gold-light);
+
+            box-shadow:
+                0 0 25px rgba(216,183,101,.2);
+        }
+
+        .cart-icon {
+            font-size: 1.1rem;
+        }
+
+        .cart-count {
+            min-width: 23px;
+            height: 23px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--gold);
+            color: var(--black);
+
+            font-size: .8rem;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+
+            padding: 150px 25px 100px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    rgba(76,50,124,.38),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 30% 30%,
+                    rgba(49,93,180,.22),
+                    transparent 35%
+                );
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+
+            border-radius: 50%;
+
+            background: rgba(168,138,216,.08);
+
+            filter: blur(100px);
+
+            bottom: -300px;
+            right: -150px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .small-title {
+            color: var(--lavender);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: .8rem;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            color: var(--gold-light);
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            letter-spacing: 5px;
+            margin-bottom: 20px;
 
-    gap: 24px;
-}
+            text-shadow:
+                0 0 25px rgba(216,183,101,.22),
+                0 0 70px rgba(168,138,216,.15);
+        }
 
-nav a {
-    color: var(--white-soft);
+        .hero h2 {
+            color: var(--white);
+            font-weight: normal;
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            line-height: 1.7;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .hero-buttons {
+            margin-top: 40px;
+
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+
+            border: 1px solid var(--gold);
+
+            color: var(--black);
+            background: linear-gradient(
+                135deg,
+                var(--gold-light),
+                var(--gold)
+            );
 
-    text-decoration: none;
+            font-weight: bold;
 
-    font-family: Arial, sans-serif;
+            cursor: pointer;
 
-    font-size: 11px;
+            transition: .3s ease;
+        }
 
-    letter-spacing: 1.2px;
+        .btn:hover {
+            transform: translateY(-3px);
 
-    transition: .3s;
-}
+            box-shadow:
+                0 10px 30px rgba(216,183,101,.2);
+        }
 
-nav a:hover {
-    color: var(--gold-light);
+        .btn-outline {
+            background: transparent;
+            color: var(--gold-light);
+        }
 
-    text-shadow:
-        0 0 12px rgba(215,182,92,.4);
-}
+        .btn-outline:hover {
+            background: rgba(216,183,101,.08);
+        }
 
 
-/* =========================================================
-   HERO
-========================================================= */
+        /* =========================
+           SECTIUNI
+        ========================== */
 
-.hero {
-    min-height: 100vh;
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 110px 25px;
+        }
 
-    position: relative;
+        .section-container {
+            max-width: 1150px;
+            margin: auto;
+        }
 
-    display: flex;
+        .section-title {
+            text-align: center;
+            color: var(--gold-light);
 
-    justify-content: center;
+            font-size: clamp(2rem, 5vw, 3rem);
 
-    align-items: center;
+            margin-bottom: 18px;
 
-    text-align: center;
+            text-shadow:
+                0 0 20px rgba(216,183,101,.15);
+        }
 
-    padding: 150px 7% 100px;
+        .section-subtitle {
+            text-align: center;
+            color: var(--lavender);
 
-    overflow: hidden;
+            max-width: 650px;
+            margin: 0 auto 55px;
 
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(71,78,180,.38),
-            transparent 25%
-        ),
+            line-height: 1.7;
+        }
 
-        radial-gradient(
-            circle at 20% 80%,
-            rgba(84,38,130,.3),
-            transparent 30%
-        ),
 
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(35,86,180,.25),
-            transparent 28%
-        ),
+        /* =========================
+           POVESTEA
+        ========================== */
 
-        linear-gradient(
-            135deg,
-            #02030a,
-            #07102b 45%,
-            #120a26
-        );
-}
+        .story {
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(11,20,48,.92),
+                    rgba(76,50,124,.25)
+                );
+        }
 
+        .story-box {
+            max-width: 850px;
+            margin: auto;
 
-/* glow */
+            padding: 50px;
 
-.hero::before {
-    content: "";
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20,38,83,.65),
+                    rgba(76,50,124,.25)
+                );
 
-    position: absolute;
+            border: 1px solid var(--line);
+            border-radius: 25px;
 
-    width: 650px;
-    height: 650px;
+            box-shadow: var(--shadow);
 
-    border-radius: 50%;
+            text-align: center;
+        }
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(103,126,255,.18),
-            transparent 65%
-        );
+        .story-box::before {
+            content: "✦";
 
-    filter: blur(15px);
+            display: block;
 
-    animation: glow 7s ease-in-out infinite;
-}
+            color: var(--gold);
+            font-size: 1.5rem;
 
-@keyframes glow {
+            margin-bottom: 20px;
+        }
 
-    0%, 100% {
-        transform: scale(.92);
-        opacity: .6;
-    }
+        .story-box p {
+            color: var(--white-soft);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
 
-    50% {
-        transform: scale(1.08);
-        opacity: 1;
-    }
 
-}
+        /* =========================
+           BIBLIOTECĂ
+        ========================== */
 
+        .library {
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(49,93,180,.16),
+                    transparent 40%
+                );
+        }
 
-/* =========================================================
-   STELUȚE ANIMATE
-========================================================= */
+        .books {
+            display: grid;
 
-.stars {
-    position: absolute;
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
 
-    inset: 0;
+            gap: 30px;
+        }
 
-    pointer-events: none;
-}
+        .book-card {
+            position: relative;
 
-.stars::before,
-.stars::after {
-    content:
-        "✦   ·     ✧       ·   ✦        ✧     ·       ✦";
+            min-height: 400px;
 
-    position: absolute;
+            border-radius: 20px;
 
-    white-space: nowrap;
+            padding: 30px;
 
-    color: rgba(255,255,255,.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
 
-    font-size: 13px;
+            overflow: hidden;
 
-    letter-spacing: 18px;
+            background:
+                linear-gradient(
+                    145deg,
+                    #101d43,
+                    #2a1950
+                );
 
-    animation: starsMove 15s linear infinite;
-}
+            border: 1px solid rgba(216,183,101,.3);
 
-.stars::before {
-    top: 24%;
+            box-shadow: var(--shadow);
 
-    left: -30%;
-}
+            transition: .4s ease;
+        }
 
-.stars::after {
-    top: 72%;
+        .book-card:nth-child(2) {
+            background:
+                linear-gradient(
+                    145deg,
+                    #172c58,
+                    #45246b
+                );
+        }
 
-    left: -50%;
+        .book-card:nth-child(3) {
+            background:
+                linear-gradient(
+                    145deg,
+                    #241a4c,
+                    #111d42
+                );
+        }
 
-    color: rgba(215,182,92,.65);
+        .book-card::before {
+            content: "✦  ✧  ⋆  ✦";
 
-    animation-duration: 21s;
-}
+            position: absolute;
+            top: 35px;
+            left: 0;
+            width: 100%;
 
-@keyframes starsMove {
+            text-align: center;
 
-    from {
-        transform: translateX(0);
-    }
+            color: rgba(255,255,255,.6);
 
-    to {
-        transform: translateX(160vw);
-    }
+            letter-spacing: 10px;
+        }
 
-}
+        .book-card::after {
+            content: "";
 
+            position: absolute;
 
-/* =========================================================
-   HERO CONTENT
-========================================================= */
+            width: 200px;
+            height: 200px;
 
-.hero-content {
-    position: relative;
+            background: rgba(168,138,216,.16);
 
-    z-index: 5;
+            border-radius: 50%;
 
-    max-width: 950px;
-}
+            filter: blur(50px);
 
-.chapter {
-    color: var(--gold);
+            top: 80px;
+            right: -60px;
+        }
 
-    font-family: Arial, sans-serif;
+        .book-card:hover {
+            transform: translateY(-8px);
 
-    text-transform: uppercase;
+            border-color: var(--gold-light);
 
-    font-size: 10px;
+            box-shadow:
+                0 25px 60px rgba(0,0,0,.55),
+                0 0 30px rgba(76,50,124,.2);
+        }
 
-    letter-spacing: 6px;
+        .book-status {
+            position: relative;
+            z-index: 2;
 
-    margin-bottom: 30px;
-}
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
 
-.hero h1 {
-    font-size: clamp(65px, 11vw, 135px);
+            font-size: .72rem;
 
-    font-weight: normal;
+            margin-bottom: 10px;
+        }
 
-    line-height: .95;
+        .book-card h3 {
+            position: relative;
+            z-index: 2;
 
-    letter-spacing: 5px;
+            color: var(--white);
 
-    color: white;
+            font-size: 1.6rem;
 
-    text-shadow:
-        0 0 30px rgba(120,150,255,.12);
-}
+            margin-bottom: 10px;
+        }
 
-.hero h1 span {
-    color: var(--gold-light);
+        .book-card p {
+            position: relative;
+            z-index: 2;
 
-    text-shadow:
-        0 0 25px rgba(215,182,92,.3);
-}
+            color: var(--white-soft);
 
-.hero-line {
-    width: 150px;
+            line-height: 1.6;
 
-    height: 1px;
+            margin-bottom: 20px;
+        }
 
-    margin: 35px auto;
+        .book-price {
+            position: relative;
+            z-index: 2;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
-}
+            color: var(--gold-light);
 
-.hero p {
-    max-width: 730px;
+            font-size: 1.3rem;
 
-    margin: auto;
+            margin-bottom: 15px;
+        }
 
-    color: var(--white-soft);
+        .book-button {
+            position: relative;
+            z-index: 2;
 
-    font-size: 19px;
+            width: 100%;
 
-    line-height: 1.9;
+            padding: 12px;
 
-    font-style: italic;
-}
+            border: 1px solid var(--gold);
 
+            border-radius: 25px;
 
-/* =========================================================
-   BUTOANE
-========================================================= */
+            background: transparent;
 
-.button {
-    display: inline-block;
+            color: var(--gold-light);
 
-    margin-top: 38px;
+            cursor: pointer;
 
-    padding: 16px 36px;
+            transition: .3s ease;
+        }
 
-    color: #080914;
+        .book-button:hover {
+            background: rgba(216,183,101,.1);
+        }
 
-    background:
-        linear-gradient(
-            135deg,
-            var(--gold-light),
-            var(--gold)
-        );
+        .book-button.disabled {
+            opacity: .45;
+            cursor: not-allowed;
+        }
 
-    border: 1px solid var(--gold-light);
 
-    text-decoration: none;
+        /* =========================
+           AUTORI
+        ========================== */
 
-    font-family: Arial, sans-serif;
+        .authors {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(76,50,124,.18),
+                    rgba(11,20,48,.45)
+                );
+        }
 
-    font-size: 11px;
+        .authors-grid {
+            display: grid;
 
-    letter-spacing: 1.5px;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
 
-    transition: .35s;
+            gap: 25px;
+        }
 
-    box-shadow:
-        0 0 25px rgba(215,182,92,.08);
-}
+        .author-card {
+            padding: 35px;
 
-.button:hover {
-    transform: translateY(-4px);
+            border-radius: 20px;
 
-    background: white;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20,38,83,.7),
+                    rgba(76,50,124,.3)
+                );
 
-    box-shadow:
-        0 12px 40px rgba(215,182,92,.22);
-}
+            border: 1px solid rgba(216,183,101,.25);
 
+            text-align: center;
+        }
 
-/* =========================================================
-   DIVIDER
-========================================================= */
+        .author-symbol {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
 
-.page-turn {
-    height: 100px;
+        .author-card h3 {
+            color: var(--gold-light);
+            margin-bottom: 12px;
+        }
 
-    display: flex;
+        .author-card p {
+            color: var(--white-soft);
+            line-height: 1.7;
+        }
 
-    justify-content: center;
 
-    align-items: center;
+        /* =========================
+           SERVICII
+        ========================== */
 
-    background: #030511;
+        .services {
+            background:
+                radial-gradient(
+                    circle at 20% 50%,
+                    rgba(76,50,124,.22),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(49,93,180,.18),
+                    transparent 35%
+                );
+        }
 
-    color: var(--gold);
+        .services-grid {
+            display: grid;
 
-    font-size: 18px;
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
 
-    letter-spacing: 18px;
+            gap: 25px;
+        }
 
-    border-top: 1px solid rgba(215,182,92,.12);
+        .service-card {
+            padding: 35px;
 
-    border-bottom: 1px solid rgba(215,182,92,.12);
-}
+            border-radius: 20px;
 
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(11,20,48,.85),
+                    rgba(76,50,124,.3)
+                );
 
-/* =========================================================
-   SECȚIUNI
-========================================================= */
+            border: 1px solid rgba(216,183,101,.25);
 
-section {
-    position: relative;
+            transition: .3s ease;
+        }
 
-    padding: 120px 8%;
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
 
-    overflow: hidden;
-}
+        .service-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
 
-.section-heading {
-    max-width: 820px;
+        .service-card h3 {
+            color: var(--gold-light);
+            margin-bottom: 12px;
+        }
 
-    margin: 0 auto 65px;
+        .service-card p {
+            color: var(--white-soft);
+            line-height: 1.7;
+        }
 
-    text-align: center;
 
-    position: relative;
+        /* =========================
+           MANUSCRIS CTA
+        ========================== */
 
-    z-index: 2;
-}
+        .manuscript {
+            text-align: center;
 
-.section-number {
-    color: var(--gold);
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(76,50,124,.35),
+                    transparent 50%
+                );
+        }
 
-    font-family: Arial, sans-serif;
+        .manuscript-box {
+            max-width: 850px;
+            margin: auto;
 
-    font-size: 10px;
+            padding: 60px 30px;
 
-    text-transform: uppercase;
+            border-radius: 30px;
 
-    letter-spacing: 5px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20,38,83,.7),
+                    rgba(76,50,124,.4)
+                );
 
-    margin-bottom: 18px;
-}
+            border: 1px solid var(--line);
 
-.section-heading h2 {
-    color: white;
+            box-shadow: var(--shadow);
+        }
 
-    font-size: clamp(40px, 6vw, 65px);
+        .manuscript-box h2 {
+            color: var(--gold-light);
 
-    font-weight: normal;
+            font-size: 2.4rem;
 
-    margin-bottom: 20px;
-}
+            margin-bottom: 15px;
+        }
 
-.section-heading p {
-    color: var(--text);
+        .manuscript-box p {
+            color: var(--white-soft);
 
-    font-size: 17px;
+            max-width: 600px;
+            margin: 0 auto 30px;
 
-    line-height: 1.8;
-}
+            line-height: 1.7;
+        }
 
 
-/* =========================================================
-   POVESTEA
-========================================================= */
+        /* =========================
+           CONTACT
+        ========================== */
 
-.story {
-    background:
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(83,48,145,.28),
-            transparent 30%
-        ),
+        .contact {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(11,20,48,.5),
+                    rgba(4,5,12,.95)
+                );
+        }
 
-        radial-gradient(
-            circle at 15% 80%,
-            rgba(28,73,155,.22),
-            transparent 30%
-        ),
+        .contact-grid {
+            display: grid;
 
-        #070a19;
-}
+            grid-template-columns:
+                repeat(auto-fit, minmax(230px, 1fr));
 
-.story-box {
-    max-width: 900px;
+            gap: 25px;
+        }
 
-    margin: auto;
+        .contact-card {
+            padding: 30px;
 
-    padding: 65px;
+            border-radius: 20px;
 
-    position: relative;
+            text-align: center;
 
-    z-index: 2;
+            background:
+                rgba(20,38,83,.4);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18,28,66,.9),
-            rgba(15,9,35,.92)
-        );
+            border: 1px solid rgba(216,183,101,.2);
+        }
 
-    border:
+        .contact-card span {
+            display: block;
 
-        1px solid rgba(215,182,92,.28);
+            color: var(--gold);
 
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.45);
-}
+            font-size: 1.7rem;
 
-.story-box::before {
-    content: "✦";
+            margin-bottom: 15px;
+        }
 
-    position: absolute;
+        .contact-card h3 {
+            color: var(--gold-light);
 
-    top: 25px;
+            margin-bottom: 10px;
+        }
 
-    right: 30px;
+        .contact-card p {
+            color: var(--white-soft);
+        }
 
-    color: var(--gold);
 
-    font-size: 18px;
-}
+        /* =========================
+           FOOTER
+        ========================== */
 
-.story-box p {
-    color: #d9deeb;
+        footer {
+            padding: 35px 20px;
 
-    font-size: 19px;
+            text-align: center;
 
-    line-height: 2;
+            background: #020309;
 
-    margin-bottom: 25px;
-}
+            border-top: 1px solid rgba(216,183,101,.18);
+        }
 
-.dropcap::first-letter {
-    float: left;
+        footer .footer-logo {
+            color: var(--gold-light);
 
-    color: var(--gold-light);
+            font-size: 1.5rem;
 
-    font-size: 75px;
+            margin-bottom: 10px;
+        }
 
-    line-height: .75;
+        footer p {
+            color: #85899a;
 
-    padding-right: 12px;
-}
+            font-size: .85rem;
+        }
 
 
-/* =========================================================
-   BIBLIOTECA
-========================================================= */
+        /* =========================
+           COȘUL — PANOU LATERAL
+        ========================== */
 
-.library {
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(64,79,180,.3),
-            transparent 38%
-        ),
+        .cart-overlay {
+            position: fixed;
 
-        #040611;
-}
+            inset: 0;
 
-.bookshelf {
-    max-width: 1100px;
+            background: rgba(0,0,0,.65);
 
-    margin: auto;
+            opacity: 0;
+            visibility: hidden;
 
-    display: grid;
+            transition: .3s ease;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+            z-index: 1998;
+        }
 
-    gap: 45px;
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-    position: relative;
+        .cart-panel {
+            position: fixed;
 
-    z-index: 2;
-}
+            top: 0;
+            right: 0;
 
-.book-card {
-    text-align: center;
-}
+            width: min(430px, 100%);
 
-.book-cover {
-    height: 410px;
+            height: 100vh;
 
-    padding: 30px;
+            z-index: 1999;
 
-    position: relative;
+            background:
+                linear-gradient(
+                    160deg,
+                    #080b18,
+                    #101c3e 55%,
+                    #24153f
+                );
 
-    display: flex;
+            border-left: 1px solid rgba(216,183,101,.35);
 
-    justify-content: center;
+            box-shadow:
+                -20px 0 70px rgba(0,0,0,.55);
 
-    align-items: center;
+            transform: translateX(100%);
 
-    transition: .5s;
+            transition: transform .4s ease;
 
-    box-shadow:
-        15px 25px 55px rgba(0,0,0,.65);
-}
+            display: flex;
+            flex-direction: column;
+        }
 
-.book-cover:hover {
-    transform:
-        translateY(-12px)
-        rotate(-1deg);
+        .cart-panel.active {
+            transform: translateX(0);
+        }
 
-    box-shadow:
-        20px 35px 70px rgba(0,0,0,.75);
-}
+        .cart-header {
+            padding: 25px;
 
-.book-cover::before {
-    content: "";
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-    position: absolute;
+            border-bottom: 1px solid rgba(216,183,101,.2);
+        }
 
-    left: 14px;
+        .cart-header h2 {
+            color: var(--gold-light);
+            font-size: 1.5rem;
+        }
 
-    top: 0;
+        .close-cart {
+            border: none;
+            background: transparent;
 
-    bottom: 0;
+            color: var(--white-soft);
 
-    width: 3px;
+            font-size: 1.7rem;
 
-    background: rgba(255,255,255,.2);
-}
+            cursor: pointer;
 
-.book-cover-content {
-    width: 100%;
+            transition: .2s ease;
+        }
 
-    height: 100%;
+        .close-cart:hover {
+            color: var(--gold-light);
+        }
 
-    padding: 30px;
+        .cart-content {
+            flex: 1;
 
-    display: flex;
+            overflow-y: auto;
 
-    flex-direction: column;
+            padding: 25px;
+        }
 
-    justify-content: center;
+        .empty-cart {
+            min-height: 300px;
 
-    border: 1px solid rgba(215,182,92,.6);
-}
+            display: flex;
+            flex-direction: column;
 
-.book-cover h3 {
-    color: white;
+            justify-content: center;
+            align-items: center;
 
-    font-size: 31px;
+            text-align: center;
+        }
 
-    font-weight: normal;
-}
+        .empty-cart-icon {
+            font-size: 3rem;
 
-.book-cover small {
-    margin-top: 30px;
+            color: var(--gold);
 
-    color: var(--gold-light);
+            margin-bottom: 20px;
+        }
 
-    font-family: Arial, sans-serif;
+        .empty-cart h3 {
+            color: var(--gold-light);
 
-    letter-spacing: 4px;
-}
+            margin-bottom: 10px;
+        }
 
-.cover-one {
-    background:
-        radial-gradient(
-            circle at 70% 20%,
-            rgba(112,139,255,.45),
-            transparent 25%
-        ),
+        .empty-cart p {
+            color: var(--white-soft);
 
-        linear-gradient(
-            145deg,
-            #030512,
-            #102458,
-            #17103b
-        );
-}
+            line-height: 1.6;
+        }
 
-.cover-two {
-    background:
-        radial-gradient(
-            circle at 30% 25%,
-            rgba(171,120,255,.4),
-            transparent 28%
-        ),
+        .cart-item {
+            display: flex;
 
-        linear-gradient(
-            145deg,
-            #080511,
-            #30185a,
-            #101a43
-        );
-}
+            align-items: center;
 
-.cover-three {
-    background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(215,182,92,.25),
-            transparent 25%
-        ),
+            gap: 15px;
 
-        linear-gradient(
-            145deg,
-            #050814,
-            #182c61,
-            #241542
-        );
-}
+            padding: 15px 0;
 
-.book-card > h3 {
-    color: white;
+            border-bottom: 1px solid rgba(255,255,255,.1);
+        }
 
-    margin-top: 24px;
+        .cart-item-info {
+            flex: 1;
+        }
 
-    font-size: 22px;
+        .cart-item-info h4 {
+            color: var(--white);
 
-    font-weight: normal;
-}
+            margin-bottom: 6px;
+        }
 
-.book-card > p {
-    color: #8994ad;
+        .cart-item-info p {
+            color: var(--gold-light);
 
-    margin-top: 8px;
+            font-size: .9rem;
+        }
 
-    font-family: Arial, sans-serif;
+        .cart-quantity {
+            color: var(--lavender);
 
-    font-size: 13px;
-}
+            font-size: .85rem;
+        }
 
+        .remove-item {
+            border: none;
 
-/* =========================================================
-   AUTORI
-========================================================= */
+            background: transparent;
 
-.authors {
-    text-align: center;
+            color: #aaa;
 
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(83,43,145,.3),
-            transparent 40%
-        ),
+            cursor: pointer;
 
-        #080612;
-}
+            font-size: 1.1rem;
+        }
 
-.author-quote {
-    max-width: 850px;
+        .remove-item:hover {
+            color: var(--gold-light);
+        }
 
-    margin: 50px auto;
+        .cart-footer {
+            padding: 25px;
 
-    color: #eeeef7;
+            border-top: 1px solid rgba(216,183,101,.2);
+        }
 
-    font-size: 27px;
+        .cart-total {
+            display: flex;
 
-    line-height: 1.7;
+            justify-content: space-between;
 
-    font-style: italic;
-}
+            margin-bottom: 18px;
+        }
 
-.authors .button {
-    color: white;
+        .cart-total span:first-child {
+            color: var(--white-soft);
+        }
 
-    background: transparent;
-}
+        .cart-total span:last-child {
+            color: var(--gold-light);
 
-.authors .button:hover {
-    color: #080914;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
 
-    background: var(--gold);
-}
+        .checkout-btn {
+            width: 100%;
 
+            padding: 14px;
 
-/* =========================================================
-   SERVICII
-========================================================= */
+            border: 1px solid var(--gold);
 
-.services {
-    background:
-        radial-gradient(
-            circle at 20% 30%,
-            rgba(35,73,153,.25),
-            transparent 30%
-        ),
+            border-radius: 30px;
 
-        radial-gradient(
-            circle at 80% 70%,
-            rgba(91,42,139,.25),
-            transparent 30%
-        ),
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold-light),
+                    var(--gold)
+                );
 
-        #050817;
-}
+            color: var(--black);
 
-.service-grid {
-    max-width: 1150px;
+            font-weight: bold;
 
-    margin: auto;
+            cursor: pointer;
 
-    display: grid;
+            transition: .3s ease;
+        }
 
-    grid-template-columns:
-        repeat(4, 1fr);
+        .checkout-btn:disabled {
+            opacity: .4;
 
-    gap: 20px;
+            cursor: not-allowed;
+        }
 
-    position: relative;
+        .checkout-note {
+            margin-top: 12px;
 
-    z-index: 2;
-}
+            text-align: center;
 
-.service {
-    padding: 45px 25px;
+            color: #8f93a4;
 
-    text-align: center;
+            font-size: .75rem;
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,32,70,.85),
-            rgba(19,11,43,.9)
-        );
+            line-height: 1.5;
+        }
 
-    border: 1px solid rgba(180,185,220,.15);
 
-    transition: .35s;
-}
+        /* =========================
+           RESPONSIVE
+        ========================== */
 
-.service:hover {
-    transform: translateY(-8px);
+        @media (max-width: 950px) {
 
-    border-color:
-        rgba(215,182,92,.5);
+            nav {
+                display: none;
+            }
 
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.4);
-}
+            .navbar {
+                justify-content: space-between;
+            }
+        }
 
-.service-icon {
-    color: var(--gold);
+        @media (max-width: 600px) {
 
-    font-size: 30px;
+            .navbar {
+                min-height: 70px;
+                padding: 0 15px;
+            }
 
-    margin-bottom: 22px;
-}
+            .logo {
+                font-size: 1.25rem;
+            }
 
-.service h3 {
-    color: white;
+            .cart-button {
+                padding: 8px 11px;
+            }
 
-    font-size: 20px;
+            .hero {
+                padding-top: 120px;
+            }
 
-    font-weight: normal;
+            section {
+                padding: 80px 18px;
+            }
 
-    margin-bottom: 13px;
-}
+            .story-box {
+                padding: 30px 22px;
+            }
 
-.service p {
-    color: #9da8c0;
+            .book-card {
+                min-height: 360px;
+            }
+        }
 
-    font-family: Arial, sans-serif;
-
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   MANUSCRIS
-========================================================= */
-
-.manuscript {
-    background:
-        radial-gradient(
-            circle at 15% 50%,
-            rgba(40,88,180,.35),
-            transparent 32%
-        ),
-
-        radial-gradient(
-            circle at 85% 20%,
-            rgba(116,60,175,.28),
-            transparent 30%
-        ),
-
-        #050715;
-}
-
-.manuscript-inner {
-    max-width: 1050px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 70px;
-
-    align-items: center;
-
-    position: relative;
-
-    z-index: 2;
-}
-
-.manuscript-text h2 {
-    color: white;
-
-    font-size: clamp(40px, 5vw, 60px);
-
-    font-weight: normal;
-
-    margin-bottom: 25px;
-}
-
-.manuscript-text p {
-    color: #aeb8d0;
-
-    font-size: 18px;
-
-    line-height: 1.9;
-}
-
-.manuscript-paper {
-    padding: 55px 45px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #15295b,
-            #251342
-        );
-
-    border: 1px solid rgba(215,182,92,.4);
-
-    box-shadow:
-        15px 25px 60px rgba(0,0,0,.6);
-
-    transform: rotate(2deg);
-}
-
-.manuscript-paper span {
-    color: var(--gold);
-
-    font-family: Arial, sans-serif;
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-}
-
-.manuscript-paper h3 {
-    color: white;
-
-    font-size: 31px;
-
-    font-weight: normal;
-
-    margin: 22px 0;
-}
-
-.manuscript-paper p {
-    color: #c4cce0;
-
-    line-height: 1.8;
-
-    font-style: italic;
-}
-
-
-/* =========================================================
-   CONTACT
-========================================================= */
-
-.contact {
-    text-align: center;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(72,64,170,.3),
-            transparent 40%
-        ),
-
-        #030511;
-}
-
-.contact-box {
-    max-width: 950px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 20px;
-
-    position: relative;
-
-    z-index: 2;
-}
-
-.contact-card {
-    padding: 38px 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(17,29,62,.9),
-            rgba(25,12,47,.9)
-        );
-
-    border: 1px solid rgba(215,182,92,.18);
-
-    transition: .3s;
-}
-
-.contact-card:hover {
-    transform: translateY(-5px);
-
-    border-color:
-        rgba(215,182,92,.45);
-}
-
-.contact-card .icon {
-    color: var(--gold);
-
-    font-size: 26px;
-
-    margin-bottom: 16px;
-}
-
-.contact-card h3 {
-    color: white;
-
-    font-weight: normal;
-
-    font-size: 18px;
-
-    margin-bottom: 10px;
-}
-
-.contact-card a,
-.contact-card p {
-    color: #aeb8d0;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 13px;
-
-    text-decoration: none;
-}
-
-.contact-card a:hover {
-    color: var(--gold-light);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    padding: 65px 20px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            180deg,
-            #02030a,
-            #010208
-        );
-
-    border-top: 1px solid rgba(215,182,92,.2);
-}
-
-.footer-logo {
-    color: white;
-
-    font-size: 25px;
-
-    letter-spacing: 6px;
-}
-
-.footer-logo span {
-    color: var(--gold);
-}
-
-.footer-line {
-    width: 90px;
-
-    height: 1px;
-
-    margin: 22px auto;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold),
-            transparent
-        );
-}
-
-footer p {
-    color: #707b92;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    header {
-        padding: 16px 5%;
-
-        flex-direction: column;
-
-        gap: 15px;
-    }
-
-    nav {
-        gap: 13px;
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-    }
-
-    .hero {
-        padding-top: 190px;
-    }
-
-    .bookshelf {
-        grid-template-columns: 1fr;
-
-        max-width: 400px;
-    }
-
-    .service-grid {
-        grid-template-columns:
-            1fr 1fr;
-    }
-
-    .manuscript-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-box {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-
-@media (max-width: 550px) {
-
-    section {
-        padding: 85px 6%;
-    }
-
-    .logo {
-        font-size: 17px;
-
-        letter-spacing: 3px;
-    }
-
-    nav {
-        gap: 9px;
-    }
-
-    nav a {
-        font-size: 9px;
-    }
-
-    .hero h1 {
-        font-size: 57px;
-    }
-
-    .hero p {
-        font-size: 17px;
-    }
-
-    .story-box {
-        padding: 35px 25px;
-    }
-
-    .service-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .book-cover {
-        height: 350px;
-    }
-
-    .manuscript-paper {
-        transform: none;
-    }
-
-}
-
-</style>
-
+    </style>
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
-     MENIU
-===================================================== -->
+<!-- =========================
+     HEADER
+========================== -->
 
 <header>
 
-    <div class="logo">
-        ÎNTRE <span>RÂNDURI</span>
+    <div class="navbar">
+
+        <a href="#acasa" class="logo">
+            Între Rânduri
+        </a>
+
+        <nav>
+            <a href="#acasa">Acasă</a>
+            <a href="#poveste">Povestea noastră</a>
+            <a href="#carti">Bibliotecă</a>
+            <a href="#autori">Autori</a>
+            <a href="#servicii">Servicii</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <!-- COȘ -->
+        <button class="cart-button" onclick="openCart()">
+            <span class="cart-icon">🛒</span>
+            <span>Coșul tău</span>
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+
     </div>
-
-    <nav>
-
-        <a href="#acasa">Acasă</a>
-
-        <a href="#poveste">
-            Povestea noastră
-        </a>
-
-        <a href="#carti">
-            Bibliotecă
-        </a>
-
-        <a href="#autori">
-            Autori
-        </a>
-
-        <a href="#servicii">
-            Servicii
-        </a>
-
-        <a href="#contact">
-            Contact
-        </a>
-
-    </nav>
 
 </header>
 
 
-<!-- =====================================================
-     ACASĂ
-===================================================== -->
+<!-- =========================
+     HERO
+========================== -->
 
 <section class="hero" id="acasa">
 
-    <div class="stars"></div>
-
     <div class="hero-content">
 
-        <div class="chapter">
-            Capitolul I · Începutul
+        <div class="small-title">
+            ✦ Editură independentă ✦
         </div>
 
-        <h1>
-            Între <span>Rânduri</span>
-        </h1>
+        <h1>Între Rânduri</h1>
 
-        <div class="hero-line"></div>
+        <h2>
+            Unele povești nu se termină atunci când închizi cartea.
+            Ele rămân între rânduri.
+        </h2>
 
-        <p>
-            Unele povești sunt scrise pentru a fi citite.
-            Altele sunt scrise pentru a fi ținute minte.
-            Noi le oferim locul de unde pot începe.
-        </p>
+        <div class="hero-buttons">
 
-        <a href="#poveste" class="button">
-            Descoperă povestea ✦
-        </a>
+            <a href="#carti" class="btn">
+                Descoperă biblioteca
+            </a>
+
+            <a href="manuscris.html" class="btn btn-outline">
+                Trimite manuscrisul
+            </a>
+
+        </div>
 
     </div>
 
 </section>
 
 
-<div class="page-turn">
-    ✦ · ✧ · ✦
-</div>
-
-
-<!-- =====================================================
+<!-- =========================
      POVESTEA NOASTRĂ
-===================================================== -->
+========================== -->
 
 <section class="story" id="poveste">
 
-    <div class="section-heading">
+    <div class="section-container">
 
-        <div class="section-number">
-            Capitolul II · Povestea noastră
-        </div>
-
-        <h2>
-            Acolo unde poveștile prind lumină.
+        <h2 class="section-title">
+            Povestea noastră
         </h2>
 
-        <p>
-            Un spațiu pentru autori, manuscrise și povești
-            care merită descoperite.
+        <p class="section-subtitle">
+            Un loc creat pentru povești care merită să fie citite.
         </p>
 
-    </div>
+        <div class="story-box">
 
+            <p>
+                Între Rânduri este un spațiu dedicat poveștilor,
+                autorilor și cititorilor care cred că o carte poate
+                schimba felul în care vezi lumea.
+            </p>
 
-    <div class="story-box">
+            <br>
 
-        <p class="dropcap">
+            <p>
+                Descoperim manuscrise noi, lucrăm alături de autori
+                și construim o bibliotecă în care fiecare poveste
+                își găsește locul.
+            </p>
 
-            Există manuscrise care rămân ascunse ani întregi.
-            Există personaje care așteaptă să fie descoperite
-            și autori care au nevoie doar de un loc în care
-            povestea lor să poată începe.
-
-        </p>
-
-        <p>
-
-            Între Rânduri își propune să fie acel loc.
-
-        </p>
-
-        <p>
-
-            De la prima pagină până la forma finală a cărții,
-            fiecare poveste merită atenție, răbdare și respect
-            pentru vocea celui care a scris-o.
-
-        </p>
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     BIBLIOTECA
-===================================================== -->
+<!-- =========================
+     BIBLIOTECĂ
+========================== -->
 
 <section class="library" id="carti">
 
-    <div class="section-heading">
+    <div class="section-container">
 
-        <div class="section-number">
-            Capitolul III · Biblioteca
-        </div>
-
-        <h2>
-            Biblioteca Între Rânduri
+        <h2 class="section-title">
+            Biblioteca
         </h2>
 
-        <p>
-            Rafturile noastre sunt la început.
-            Primele povești vor apărea aici în curând.
+        <p class="section-subtitle">
+            Descoperă poveștile disponibile în universul Între Rânduri.
         </p>
 
-    </div>
+
+        <div class="books">
 
 
-    <div class="bookshelf">
+            <!-- CARTE 1 -->
 
+            <div class="book-card">
 
-        <div class="book-card">
-
-            <div class="book-cover cover-one">
-
-                <div class="book-cover-content">
-
-                    <h3>
-                        Prima pagină
-                    </h3>
-
-                    <small>
-                        ÎN CURÂND
-                    </small>
-
+                <div class="book-status">
+                    În curând
                 </div>
+
+                <h3>
+                    Prima noastră poveste
+                </h3>
+
+                <p>
+                    Biblioteca noastră se pregătește să primească
+                    primele titluri.
+                </p>
+
+                <div class="book-price">
+                    —
+                </div>
+
+                <button class="book-button disabled" disabled>
+                    În curând
+                </button>
 
             </div>
 
-            <h3>
-                Prima carte
-            </h3>
 
-            <p>
-                Un nou început pentru biblioteca noastră.
-            </p>
+            <!-- CARTE 2 -->
 
-        </div>
+            <div class="book-card">
 
-
-        <div class="book-card">
-
-            <div class="book-cover cover-two">
-
-                <div class="book-cover-content">
-
-                    <h3>
-                        O poveste nouă
-                    </h3>
-
-                    <small>
-                        ÎN CURÂND
-                    </small>
-
+                <div class="book-status">
+                    În curând
                 </div>
+
+                <h3>
+                    O nouă lume
+                </h3>
+
+                <p>
+                    Un nou univers literar va apărea aici.
+                </p>
+
+                <div class="book-price">
+                    —
+                </div>
+
+                <button class="book-button disabled" disabled>
+                    În curând
+                </button>
 
             </div>
 
-            <h3>
-                În curând
-            </h3>
 
-            <p>
-                O nouă poveste își caută locul.
-            </p>
+            <!-- CARTE 3 -->
 
-        </div>
+            <div class="book-card">
 
-
-        <div class="book-card">
-
-            <div class="book-cover cover-three">
-
-                <div class="book-cover-content">
-
-                    <h3>
-                        Între stele
-                    </h3>
-
-                    <small>
-                        ÎN CURÂND
-                    </small>
-
+                <div class="book-status">
+                    În curând
                 </div>
+
+                <h3>
+                    Între stele
+                </h3>
+
+                <p>
+                    Povești care așteaptă să fie descoperite.
+                </p>
+
+                <div class="book-price">
+                    —
+                </div>
+
+                <button class="book-button disabled" disabled>
+                    În curând
+                </button>
 
             </div>
 
-            <h3>
-                În curând
-            </h3>
-
-            <p>
-                Un nou titlu va apărea pe rafturile noastre.
-            </p>
-
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      AUTORI
-===================================================== -->
+========================== -->
 
 <section class="authors" id="autori">
 
-    <div class="section-heading">
+    <div class="section-container">
 
-        <div class="section-number">
-            Capitolul IV · Autorii
-        </div>
-
-        <h2>
-            Poate următoarea poveste este a ta.
+        <h2 class="section-title">
+            Autori
         </h2>
 
-        <p>
-            Căutăm voci noi, idei originale și povești
-            care merită să ajungă la cititori.
+        <p class="section-subtitle">
+            În spatele fiecărei povești există un om care a avut curajul
+            să o scrie.
         </p>
 
+        <div class="authors-grid">
+
+            <div class="author-card">
+
+                <div class="author-symbol">
+                    ✦
+                </div>
+
+                <h3>
+                    Autori noi
+                </h3>
+
+                <p>
+                    Descoperim voci noi și povești care merită
+                    să ajungă la cititori.
+                </p>
+
+            </div>
+
+
+            <div class="author-card">
+
+                <div class="author-symbol">
+                    ✧
+                </div>
+
+                <h3>
+                    Povești originale
+                </h3>
+
+                <p>
+                    Fiecare manuscris are propriul său univers.
+                </p>
+
+            </div>
+
+
+            <div class="author-card">
+
+                <div class="author-symbol">
+                    ⋆
+                </div>
+
+                <h3>
+                    Împreună
+                </h3>
+
+                <p>
+                    Construim împreună drumul unei povești
+                    de la manuscris la cititor.
+                </p>
+
+            </div>
+
+        </div>
+
     </div>
-
-
-    <div class="author-quote">
-
-        „Fiecare carte începe cu o idee,
-        dar devine poveste atunci când cineva
-        are curajul să o scrie.”
-
-    </div>
-
-
-    <a href="manuscris.html" class="button">
-        Trimite manuscrisul ✦
-    </a>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      SERVICII
-===================================================== -->
+========================== -->
 
 <section class="services" id="servicii">
 
-    <div class="section-heading">
+    <div class="section-container">
 
-        <div class="section-number">
-            Capitolul V · Atelierul
-        </div>
-
-        <h2>
-            Din manuscris în carte.
+        <h2 class="section-title">
+            Servicii
         </h2>
 
-        <p>
-            O poveste bună merită să fie îngrijită
-            înainte să ajungă în mâinile cititorilor.
+        <p class="section-subtitle">
+            Un proces creat pentru ca fiecare poveste să primească
+            atenția pe care o merită.
         </p>
 
-    </div>
+
+        <div class="services-grid">
 
 
-    <div class="service-grid">
+            <div class="service-card">
 
+                <div class="service-icon">
+                    ✦
+                </div>
 
-        <div class="service">
+                <h3>
+                    Evaluare manuscris
+                </h3>
 
-            <div class="service-icon">
-                ✦
+                <p>
+                    Primește manuscrisul tău pentru evaluare
+                    și descoperă dacă povestea se potrivește
+                    universului Între Rânduri.
+                </p>
+
             </div>
 
-            <h3>
-                Evaluare
-            </h3>
 
-            <p>
-                Analizăm manuscrisul, povestea,
-                structura și potențialul editorial.
-            </p>
+            <div class="service-card">
 
-        </div>
+                <div class="service-icon">
+                    ✧
+                </div>
 
+                <h3>
+                    Editare
+                </h3>
 
-        <div class="service">
+                <p>
+                    Pregătim poveștile pentru a ajunge într-o formă
+                    cât mai bună la cititori.
+                </p>
 
-            <div class="service-icon">
-                ✎
             </div>
 
-            <h3>
-                Editare
-            </h3>
 
-            <p>
-                Lucrăm asupra textului, structurii,
-                personajelor și coerenței poveștii.
-            </p>
+            <div class="service-card">
 
-        </div>
+                <div class="service-icon">
+                    ⋆
+                </div>
 
+                <h3>
+                    Publicare
+                </h3>
 
-        <div class="service">
+                <p>
+                    Construim împreună drumul cărții de la manuscris
+                    la biblioteca Între Rânduri.
+                </p>
 
-            <div class="service-icon">
-                ❦
             </div>
 
-            <h3>
-                Corectură
-            </h3>
 
-            <p>
-                Verificăm exprimarea, ortografia,
-                punctuația și forma finală a textului.
-            </p>
+            <div class="service-card">
 
-        </div>
+                <div class="service-icon">
+                    ✦
+                </div>
 
+                <h3>
+                    Format digital
+                </h3>
 
-        <div class="service">
+                <p>
+                    Cărțile digitale vor putea fi citite online,
+                    direct din universul Între Rânduri.
+                </p>
 
-            <div class="service-icon">
-                ♢
             </div>
 
-            <h3>
-                Publicare
-            </h3>
-
-            <p>
-                Pregătim manuscrisul pentru publicare
-                și pentru întâlnirea cu cititorii.
-            </p>
-
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      MANUSCRIS
-===================================================== -->
+========================== -->
 
 <section class="manuscript">
 
-    <div class="manuscript-inner">
+    <div class="section-container">
 
-
-        <div class="manuscript-text">
-
-            <div class="section-number">
-                Capitolul VI · Prima pagină
-            </div>
+        <div class="manuscript-box">
 
             <h2>
-                Povestea ta poate începe aici.
+                Ai o poveste de spus?
             </h2>
 
             <p>
-                Ai terminat un roman, o colecție de povestiri,
-                poezii sau o altă creație și vrei să o trimiți
-                spre evaluare?
+                Poate locul ei este chiar aici.
+                Trimite-ne manuscrisul și lasă-ne să îl descoperim.
             </p>
 
-            <a href="manuscris.html" class="button">
-                Vreau să public ✦
+            <a href="manuscris.html" class="btn">
+                Trimite manuscrisul
             </a>
 
         </div>
-
-
-        <div class="manuscript-paper">
-
-            <span>
-                MANUSCRIS
-            </span>
-
-            <h3>
-                Titlul poveștii tale
-            </h3>
-
-            <p>
-                „Poate că următoarea carte din biblioteca
-                Între Rânduri începe cu pagina pe care
-                tocmai ai scris-o.”
-            </p>
-
-        </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      CONTACT
-===================================================== -->
+========================== -->
 
 <section class="contact" id="contact">
 
-    <div class="section-heading">
+    <div class="section-container">
 
-        <div class="section-number">
-            Ultima pagină · Contact
-        </div>
-
-        <h2>
-            Să vorbim despre povești.
+        <h2 class="section-title">
+            Contact
         </h2>
 
-        <p>
-            Pentru colaborări, întrebări sau informații
-            despre Între Rânduri, ne poți contacta.
+        <p class="section-subtitle">
+            Pentru întrebări, colaborări sau informații despre publicare.
         </p>
 
-    </div>
+
+        <div class="contact-grid">
 
 
-    <div class="contact-box">
+            <div class="contact-card">
 
+                <span>☎</span>
 
-        <div class="contact-card">
+                <h3>
+                    Telefon
+                </h3>
 
-            <div class="icon">
-                ☎
+                <p>
+                    07XX XXX XXX
+                </p>
+
             </div>
 
-            <h3>
-                Telefon
-            </h3>
 
-            <a href="tel:07XXXXXXXX">
-                07XX XXX XXX
-            </a>
+            <div class="contact-card">
 
-        </div>
+                <span>✉</span>
 
+                <h3>
+                    E-mail
+                </h3>
 
-        <div class="contact-card">
+                <p>
+                    ADRESA-TA-DE-EMAIL
+                </p>
 
-            <div class="icon">
-                ✉
             </div>
 
-            <h3>
-                E-mail
-            </h3>
 
-            <a href="mailto:ADRESA-TA-DE-EMAIL">
-                ADRESA-TA-DE-EMAIL
-            </a>
+            <div class="contact-card">
 
-        </div>
+                <span>✦</span>
 
+                <h3>
+                    Manuscrise
+                </h3>
 
-        <div class="contact-card">
+                <p>
+                    Folosește formularul nostru de trimitere.
+                </p>
 
-            <div class="icon">
-                ✦
             </div>
 
-            <h3>
-                Manuscrise
-            </h3>
-
-            <a href="manuscris.html">
-                Trimite un manuscris
-            </a>
-
         </div>
-
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      FOOTER
-===================================================== -->
+========================== -->
 
 <footer>
 
     <div class="footer-logo">
-        ÎNTRE <span>RÂNDURI</span>
+        ✦ Între Rânduri ✦
     </div>
 
-    <div class="footer-line"></div>
-
     <p>
-        „Unele povești se termină.
-        Cele mai bune rămân între rânduri.”
-    </p>
-
-    <br>
-
-    <p>
-        © 2026 Între Rânduri — Toate drepturile rezervate.
+        © 2026 Între Rânduri. Toate drepturile rezervate.
     </p>
 
 </footer>
+
+
+
+<!-- =========================
+     OVERLAY COȘ
+========================== -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart()">
+</div>
+
+
+<!-- =========================
+     PANOU COȘ
+========================== -->
+
+<div class="cart-panel" id="cartPanel">
+
+
+    <div class="cart-header">
+
+        <h2>
+            🛒 Coșul tău
+        </h2>
+
+        <button
+            class="close-cart"
+            onclick="closeCart()">
+            ×
+        </button>
+
+    </div>
+
+
+    <div class="cart-content" id="cartContent">
+
+        <div class="empty-cart">
+
+            <div class="empty-cart-icon">
+                ✦
+            </div>
+
+            <h3>
+                Coșul tău este gol
+            </h3>
+
+            <p>
+                Când vei adăuga o carte, aceasta va apărea aici.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+
+            <span>
+                Total
+            </span>
+
+            <span id="cartTotal">
+                0 lei
+            </span>
+
+        </div>
+
+        <button
+            class="checkout-btn"
+            id="checkoutBtn"
+            disabled>
+
+            Continuă spre plată
+
+        </button>
+
+        <div class="checkout-note">
+
+            Cărțile sunt digitale și vor putea fi accesate online.
+            Nu există costuri de transport.
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT COȘ
+========================== -->
+
+<script>
+
+    let cart = [];
+
+
+    /* DESCHIDE COȘ */
+
+    function openCart() {
+
+        document
+            .getElementById("cartPanel")
+            .classList.add("active");
+
+        document
+            .getElementById("cartOverlay")
+            .classList.add("active");
+
+        document.body.style.overflow = "hidden";
+    }
+
+
+    /* ÎNCHIDE COȘ */
+
+    function closeCart() {
+
+        document
+            .getElementById("cartPanel")
+            .classList.remove("active");
+
+        document
+            .getElementById("cartOverlay")
+            .classList.remove("active");
+
+        document.body.style.overflow = "";
+    }
+
+
+    /* ACTUALIZEAZĂ COȘUL */
+
+    function updateCart() {
+
+        const cartContent =
+            document.getElementById("cartContent");
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        const cartTotal =
+            document.getElementById("cartTotal");
+
+        const checkoutBtn =
+            document.getElementById("checkoutBtn");
+
+
+        /* NUMĂR PRODUSE */
+
+        cartCount.textContent = cart.length;
+
+
+        /* DACĂ ESTE GOL */
+
+        if (cart.length === 0) {
+
+            cartContent.innerHTML = `
+
+                <div class="empty-cart">
+
+                    <div class="empty-cart-icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Coșul tău este gol
+                    </h3>
+
+                    <p>
+                        Când vei adăuga o carte,
+                        aceasta va apărea aici.
+                    </p>
+
+                </div>
+
+            `;
+
+            cartTotal.textContent = "0 lei";
+
+            checkoutBtn.disabled = true;
+
+            return;
+        }
+
+
+        /* PRODUSELE DIN COȘ */
+
+        cartContent.innerHTML = "";
+
+
+        let total = 0;
+
+
+        cart.forEach((product, index) => {
+
+            total += product.price;
+
+
+            const item = document.createElement("div");
+
+            item.className = "cart-item";
+
+
+            item.innerHTML = `
+
+                <div class="cart-item-info">
+
+                    <h4>
+                        ${product.name}
+                    </h4>
+
+                    <p>
+                        ${product.price} lei
+                    </p>
+
+                    <div class="cart-quantity">
+                        Carte digitală
+                    </div>
+
+                </div>
+
+                <button
+                    class="remove-item"
+                    onclick="removeFromCart(${index})">
+
+                    ×
+
+                </button>
+
+            `;
+
+
+            cartContent.appendChild(item);
+
+        });
+
+
+        /* TOTAL */
+
+        cartTotal.textContent =
+            total.toFixed(2) + " lei";
+
+
+        checkoutBtn.disabled = false;
+
+    }
+
+
+    /* ADAUGĂ PRODUS */
+
+    function addToCart(name, price) {
+
+        cart.push({
+            name: name,
+            price: price
+        });
+
+        updateCart();
+
+        openCart();
+    }
+
+
+    /* ȘTERGE PRODUS */
+
+    function removeFromCart(index) {
+
+        cart.splice(index, 1);
+
+        updateCart();
+    }
+
+
+    /* PLATĂ */
+
+    document
+        .getElementById("checkoutBtn")
+        .addEventListener("click", function() {
+
+            if (cart.length === 0) {
+                return;
+            }
+
+            alert(
+                "Sistemul de plată va fi activat după configurarea metodei oficiale de plată."
+            );
+
+        });
+
+
+</script>
 
 
 </body>

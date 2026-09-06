@@ -1,168 +1,411 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Între Rânduri — Editură digitală</title>
+<title>Între Rânduri — Editură Digitală</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    html {
-      scroll-behavior: smooth;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      margin: 0;
-      font-family: Georgia, serif;
-      background: #f7f3ed;
-      color: #211f1c;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    header {
-      background: #211f1c;
-      color: white;
-      padding: 22px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+body {
+  font-family: Georgia, serif;
+  background: #f8f3ea;
+  color: #29221e;
+  line-height: 1.6;
+}
 
-    .logo {
-      font-size: 25px;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
+/* NAVBAR */
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 22px;
-      font-family: Arial, sans-serif;
-      font-size: 15px;
-    }
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #241916;
+  color: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,.15);
+}
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+.logo {
+  font-size: 24px;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
 
-    .hero {
-      min-height: 78vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 70px 20px;
-      background: #eee7dc;
-    }
+nav {
+  display: flex;
+  gap: 25px;
+}
 
-    .hero h1 {
-      font-size: 70px;
-      margin: 0 0 20px;
-      letter-spacing: 2px;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  transition: .3s;
+}
 
-    .hero p {
-      font-size: 21px;
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.7;
-    }
+nav a:hover {
+  color: #d9b978;
+}
 
-    .button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 30px;
-      background: #211f1c;
-      color: white;
-      text-decoration: none;
-      font-family: Arial, sans-serif;
-      border-radius: 4px;
-    }
+/* HERO */
 
-    .button:hover {
-      opacity: 0.85;
-    }
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 9%;
+  background:
+    radial-gradient(circle at 80% 30%, #d8c19b 0%, transparent 25%),
+    #eee4d5;
+  gap: 50px;
+}
 
-    section {
-      padding: 80px 10%;
-      text-align: center;
-    }
+.hero-text {
+  max-width: 650px;
+}
 
-    section h2 {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
+.small-title {
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 13px;
+  color: #8b5e3c;
+  margin-bottom: 20px;
+}
 
-    section p {
-      max-width: 750px;
-      margin: auto;
-      line-height: 1.7;
-      font-size: 18px;
-    }
+.hero h1 {
+  font-size: clamp(50px, 7vw, 90px);
+  line-height: 1;
+  margin-bottom: 25px;
+}
 
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
-      margin-top: 45px;
-    }
+.hero p {
+  font-size: 20px;
+  max-width: 600px;
+  color: #594c44;
+}
 
-    .card {
-      background: white;
-      width: 260px;
-      padding: 30px 25px;
-      border-radius: 6px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
+.button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 28px;
+  background: #6f2637;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  transition: .3s;
+}
 
-    .card h3 {
-      font-size: 23px;
-      margin-top: 0;
-    }
+.button:hover {
+  transform: translateY(-3px);
+  background: #51202c;
+}
 
-    .authors {
-      background: #eee7dc;
-    }
+/* BOOK VISUAL */
 
-    .contact {
-      background: white;
-    }
+.book-display {
+  position: relative;
+  width: 350px;
+  height: 430px;
+}
 
-    footer {
-      background: #211f1c;
-      color: white;
-      text-align: center;
-      padding: 35px 20px;
-      font-family: Arial, sans-serif;
-    }
+.book {
+  position: absolute;
+  width: 210px;
+  height: 310px;
+  border-radius: 4px 10px 10px 4px;
+  box-shadow: 15px 20px 35px rgba(0,0,0,.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  color: white;
+}
 
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
+.book h3 {
+  font-size: 24px;
+}
 
-      nav a {
-        margin: 0 7px;
-      }
+.book small {
+  display: block;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
 
-      .hero h1 {
-        font-size: 48px;
-      }
+.book-one {
+  background: linear-gradient(145deg,#6f2637,#32141c);
+  left: 20px;
+  top: 60px;
+  transform: rotate(-8deg);
+}
 
-      .hero p {
-        font-size: 18px;
-      }
-    }
-  </style>
+.book-two {
+  background: linear-gradient(145deg,#a47743,#50351c);
+  right: 10px;
+  top: 20px;
+  transform: rotate(8deg);
+}
+
+/* GENERAL SECTIONS */
+
+section {
+  padding: 90px 9%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.section-title span {
+  color: #8b5e3c;
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+}
+
+.section-title h2 {
+  font-size: 46px;
+  margin-top: 8px;
+}
+
+/* BOOKS */
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+}
+
+.book-card {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+  transition: .3s;
+}
+
+.book-card:hover {
+  transform: translateY(-8px);
+}
+
+.cover {
+  height: 330px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 30px;
+  margin-bottom: 22px;
+  border-radius: 4px;
+}
+
+.cover h3 {
+  font-size: 27px;
+}
+
+.cover-one {
+  background: linear-gradient(135deg,#3a1821,#8d4054);
+}
+
+.cover-two {
+  background: linear-gradient(135deg,#253b46,#78909c);
+}
+
+.cover-three {
+  background: linear-gradient(135deg,#49361f,#b28a4d);
+}
+
+.book-card h3 {
+  font-size: 24px;
+}
+
+.book-card p {
+  color: #756961;
+  margin-top: 8px;
+}
+
+.price {
+  display: block;
+  margin-top: 15px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+/* AUTHORS */
+
+.authors {
+  background: #29201c;
+  color: white;
+  text-align: center;
+}
+
+.authors .section-title span {
+  color: #d9b978;
+}
+
+.authors p {
+  max-width: 720px;
+  margin: auto;
+  color: #ded5ce;
+  font-size: 18px;
+}
+
+/* SERVICES */
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 20px;
+}
+
+.service {
+  background: white;
+  padding: 35px 25px;
+  text-align: center;
+  border-top: 4px solid #6f2637;
+  box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.service-icon {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.service h3 {
+  margin-bottom: 10px;
+}
+
+.service p {
+  color: #71665e;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+/* WHY US */
+
+.why {
+  background: #eee4d5;
+}
+
+.why-content {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+}
+
+.why-content p {
+  font-size: 19px;
+}
+
+/* CONTACT */
+
+.contact {
+  text-align: center;
+  background: white;
+}
+
+.contact p {
+  max-width: 650px;
+  margin: auto;
+}
+
+/* FOOTER */
+
+footer {
+  background: #241916;
+  color: #cfc5be;
+  text-align: center;
+  padding: 35px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+.footer-logo {
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 22px;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 60px;
+  }
+
+  .book-display {
+    transform: scale(.8);
+    margin-top: -20px;
+  }
+
+  .books {
+    grid-template-columns: 1fr;
+  }
+
+  .services {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+
+  section {
+    padding: 65px 6%;
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 52px;
+  }
+
+  .book-display {
+    transform: scale(.7);
+    margin-top: -60px;
+  }
+}
+
+</style>
 </head>
 
 <body>
@@ -174,7 +417,7 @@
   <nav>
     <a href="#acasa">Acasă</a>
     <a href="#carti">Cărți</a>
-    <a href="#autori">Pentru autori</a>
+    <a href="#autori">Autori</a>
     <a href="#servicii">Servicii</a>
     <a href="#contact">Contact</a>
   </nav>
@@ -182,22 +425,47 @@
 </header>
 
 
-<!-- ACASĂ -->
+<!-- HERO -->
 
 <section class="hero" id="acasa">
 
-  <div>
+  <div class="hero-text">
 
-    <h1>Între Rânduri</h1>
+    <div class="small-title">
+      Editură digitală
+    </div>
+
+    <h1>
+      Povești care merită să existe.
+    </h1>
 
     <p>
-      O editură digitală dedicată poveștilor noi,
-      autorilor curajoși și cărților care merită descoperite.
+      Între Rânduri este locul unde ideile devin povești,
+      iar poveștile devin cărți.
     </p>
 
     <a class="button" href="#autori">
-      Trimite manuscrisul
+      Sunt autor
     </a>
+
+  </div>
+
+
+  <div class="book-display">
+
+    <div class="book book-one">
+      <div>
+        <h3>O poveste<br>nouă</h3>
+        <small>ÎNTRE RÂNDURI</small>
+      </div>
+    </div>
+
+    <div class="book book-two">
+      <div>
+        <h3>Dincolo de<br>pagină</h3>
+        <small>ÎNTRE RÂNDURI</small>
+      </div>
+    </div>
 
   </div>
 
@@ -208,37 +476,67 @@
 
 <section id="carti">
 
-  <h2>Cărți</h2>
+  <div class="section-title">
+    <span>Descoperă</span>
+    <h2>Cărțile noastre</h2>
+  </div>
 
-  <p>
-    Descoperă povești originale și autori aflați
-    la începutul sau în dezvoltarea drumului lor literar.
-  </p>
+  <div class="books">
 
-  <div class="cards">
+    <div class="book-card">
 
-    <div class="card">
-      <h3>În curând</h3>
+      <div class="cover cover-one">
+        <h3>În curând</h3>
+      </div>
+
+      <h3>Primul nostru titlu</h3>
+
       <p>
-        Primele titluri publicate de Între Rânduri
-        vor apărea aici.
+        O nouă poveste publicată de Între Rânduri.
       </p>
+
+      <span class="price">
+        În curând
+      </span>
+
     </div>
 
-    <div class="card">
+
+    <div class="book-card">
+
+      <div class="cover cover-two">
+        <h3>O voce<br>nouă</h3>
+      </div>
+
       <h3>Autori noi</h3>
+
       <p>
-        Descoperă voci literare noi și povești
-        care merită să fie citite.
+        Descoperă următoarele voci ale literaturii.
       </p>
+
+      <span class="price">
+        În curând
+      </span>
+
     </div>
 
-    <div class="card">
+
+    <div class="book-card">
+
+      <div class="cover cover-three">
+        <h3>Povești<br>de păstrat</h3>
+      </div>
+
       <h3>Lecturi originale</h3>
+
       <p>
-        Cărți digitale create pentru cititori
-        care caută povești diferite.
+        Cărți create pentru cititori curioși.
       </p>
+
+      <span class="price">
+        În curând
+      </span>
+
     </div>
 
   </div>
@@ -246,22 +544,24 @@
 </section>
 
 
-<!-- PENTRU AUTORI -->
+<!-- AUTORI -->
 
 <section class="authors" id="autori">
 
-  <h2>Pentru autori</h2>
+  <div class="section-title">
+    <span>Pentru scriitori</span>
+    <h2>Ai o poveste?</h2>
+  </div>
 
   <p>
-    Ai scris o carte și vrei să o faci cunoscută?
-    Trimite-ne manuscrisul, iar echipa Între Rânduri
-    îl poate analiza și îți poate oferi informații
-    despre următorii pași.
+    Poate ai terminat primul tău roman.
+    Poate ai o idee care nu îți dă pace.
+    La Între Rânduri, vrem să descoperim autori noi
+    și povești care merită să ajungă la cititori.
   </p>
 
   <a class="button" href="#contact">
-    Vreau să public
-
+    Trimite manuscrisul
   </a>
 
 </section>
@@ -271,41 +571,66 @@
 
 <section id="servicii">
 
-  <h2>Servicii editoriale</h2>
+  <div class="section-title">
+    <span>Ce oferim</span>
+    <h2>Servicii editoriale</h2>
+  </div>
 
-  <div class="cards">
+  <div class="services">
 
-    <div class="card">
-      <h3>Evaluare manuscris</h3>
+    <div class="service">
+      <div class="service-icon">📖</div>
+      <h3>Evaluare</h3>
       <p>
-        Analizăm manuscrisul și oferim feedback
-        asupra textului.
+        Analizăm manuscrisul și oferim feedback.
       </p>
     </div>
 
-    <div class="card">
+    <div class="service">
+      <div class="service-icon">✍️</div>
       <h3>Corectură</h3>
       <p>
-        Verificarea greșelilor de ortografie,
-        punctuație și exprimare.
+        Verificăm ortografia, punctuația și exprimarea.
       </p>
     </div>
 
-    <div class="card">
+    <div class="service">
+      <div class="service-icon">📝</div>
       <h3>Editare</h3>
       <p>
-        Îmbunătățirea textului, structurii și
-        clarității poveștii.
+        Lucrăm asupra textului și structurii poveștii.
       </p>
     </div>
 
-    <div class="card">
-      <h3>Pregătire pentru publicare</h3>
+    <div class="service">
+      <div class="service-icon">📚</div>
+      <h3>Publicare</h3>
       <p>
-        Pregătirea materialului pentru transformarea
-        lui într-o carte digitală.
+        Pregătim cartea pentru publicare digitală.
       </p>
     </div>
+
+  </div>
+
+</section>
+
+
+<!-- DE CE NOI -->
+
+<section class="why">
+
+  <div class="section-title">
+    <span>Despre noi</span>
+    <h2>De ce Între Rânduri?</h2>
+  </div>
+
+  <div class="why-content">
+
+    <p>
+      Pentru că fiecare carte începe cu o idee.
+      Iar uneori, tot ce îi trebuie unei idei
+      este cineva care să creadă în ea.
+    </p>
 
   </div>
 
@@ -316,11 +641,14 @@
 
 <section class="contact" id="contact">
 
-  <h2>Contact</h2>
+  <div class="section-title">
+    <span>Hai să vorbim</span>
+    <h2>Contact</h2>
+  </div>
 
   <p>
-    Pentru întrebări despre manuscrise, servicii
-    editoriale sau colaborări, ne poți contacta.
+    Pentru manuscrise, colaborări sau întrebări,
+    contactează echipa Între Rânduri.
   </p>
 
   <a class="button" href="mailto:ADRESA-TA-DE-EMAIL">
@@ -331,6 +659,10 @@
 
 
 <footer>
+
+  <div class="footer-logo">
+    ÎNTRE RÂNDURI
+  </div>
 
   © 2026 Între Rânduri — Editură digitală
 

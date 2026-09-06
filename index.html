@@ -8,11 +8,6 @@
 
 <style>
 
-/* =====================================================
-   ÎNTRE RÂNDURI
-   DESIGN: roz pal + argintiu + auriu
-   ===================================================== */
-
 * {
     margin: 0;
     padding: 0;
@@ -30,8 +25,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ---------- CULORI ---------- */
-
 :root {
     --pink: #e8cfd7;
     --pink-light: #f6e9ed;
@@ -43,8 +36,6 @@ body {
     --wine: #633c4b;
     --white: #fffdfd;
 }
-
-/* ---------- TEXTURI ---------- */
 
 ::selection {
     background: var(--gold-light);
@@ -61,16 +52,12 @@ header {
     top: 0;
     width: 100%;
     z-index: 1000;
-
     padding: 20px 7%;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background: rgba(48,39,43,0.94);
     backdrop-filter: blur(12px);
-
     border-bottom: 1px solid rgba(229,208,154,0.4);
 }
 
@@ -104,20 +91,16 @@ nav a:hover {
 
 
 /* =====================================================
-   HERO — PRIMA PAGINĂ
+   HERO
    ===================================================== */
 
 .hero {
     min-height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     text-align: center;
-
     padding: 150px 8% 100px;
-
     position: relative;
 
     background:
@@ -153,6 +136,7 @@ nav a:hover {
         opacity: .3;
         transform: scale(.8);
     }
+
     50% {
         opacity: 1;
         transform: scale(1.2);
@@ -202,21 +186,15 @@ nav a:hover {
 
 .button {
     display: inline-block;
-
     margin-top: 35px;
     padding: 16px 34px;
-
     background: var(--wine);
     color: white;
-
     text-decoration: none;
-
     border: 1px solid var(--gold);
-
     font-family: Arial, sans-serif;
     font-size: 13px;
     letter-spacing: 1px;
-
     transition: .3s;
 }
 
@@ -228,20 +206,16 @@ nav a:hover {
 
 
 /* =====================================================
-   TRANZIȚIE DE PAGINĂ
+   TRANZIȚIE
    ===================================================== */
 
 .page-turn {
     height: 90px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #fff;
-
     color: var(--gold);
-
     font-size: 25px;
     letter-spacing: 12px;
 }
@@ -283,7 +257,7 @@ section {
 
 
 /* =====================================================
-   POVESTEA EDITURII
+   POVESTEA
    ===================================================== */
 
 .story {
@@ -300,14 +274,10 @@ section {
 .story-box {
     max-width: 850px;
     margin: auto;
-
     padding: 60px;
-
     background: rgba(255,255,255,.8);
-
     border-left: 2px solid var(--gold);
     border-right: 2px solid var(--pink);
-
     box-shadow: 0 20px 60px rgba(80,60,70,.08);
 }
 
@@ -350,13 +320,10 @@ section {
 
 .book-cover {
     height: 390px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 35px;
-
     position: relative;
 
     box-shadow:
@@ -368,6 +335,7 @@ section {
 
 .book-cover:hover {
     transform: translateY(-12px) rotate(-1deg);
+
     box-shadow:
         18px 28px 45px rgba(50,35,40,.3);
 }
@@ -489,13 +457,9 @@ section {
 
 .service {
     background: white;
-
     padding: 40px 25px;
-
     text-align: center;
-
     border: 1px solid #e3d9dd;
-
     transition: .3s;
 }
 
@@ -556,13 +520,9 @@ section {
 
 .manuscript-paper {
     background: #fff;
-
     padding: 50px 40px;
-
     box-shadow: 10px 15px 40px rgba(50,40,45,.15);
-
     transform: rotate(2deg);
-
     border-top: 4px solid var(--gold);
 }
 
@@ -609,11 +569,8 @@ section {
 footer {
     background: #30272b;
     color: #d8cdd1;
-
     text-align: center;
-
     padding: 55px 20px;
-
     font-family: Arial, sans-serif;
     font-size: 13px;
 }
@@ -710,9 +667,7 @@ footer {
 <body>
 
 
-<!-- =====================================================
-     MENIU
-     ===================================================== -->
+<!-- MENIU -->
 
 <header>
 
@@ -721,20 +676,35 @@ footer {
     </div>
 
     <nav>
+
         <a href="#acasa">Acasă</a>
-        <a href="#poveste">Povestea noastră</a>
-        <a href="#carti">Bibliotecă</a>
-        <a href="#autori">Autori</a>
-        <a href="#servicii">Servicii</a>
-        <a href="#contact">Contact</a>
+
+        <a href="#poveste">
+            Povestea noastră
+        </a>
+
+        <a href="#carti">
+            Bibliotecă
+        </a>
+
+        <a href="#autori">
+            Autori
+        </a>
+
+        <a href="#servicii">
+            Servicii
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
     </nav>
 
 </header>
 
 
-<!-- =====================================================
-     PRIMA PAGINĂ
-     ===================================================== -->
+<!-- PRIMA PAGINĂ -->
 
 <section class="hero" id="acasa">
 
@@ -769,9 +739,7 @@ footer {
 </div>
 
 
-<!-- =====================================================
-     POVESTEA EDITURII
-     ===================================================== -->
+<!-- POVESTEA EDITURII -->
 
 <section class="story" id="poveste">
 
@@ -781,7 +749,9 @@ footer {
             Capitolul II · Povestea noastră
         </div>
 
-        <h2>Totul începe cu o pagină.</h2>
+        <h2>
+            Totul începe cu o pagină.
+        </h2>
 
         <p>
             Iar uneori, acea pagină poate schimba totul.
@@ -814,9 +784,7 @@ footer {
 </section>
 
 
-<!-- =====================================================
-     BIBLIOTECA
-     ===================================================== -->
+<!-- BIBLIOTECA -->
 
 <section class="library" id="carti">
 
@@ -826,7 +794,9 @@ footer {
             Capitolul III · Biblioteca
         </div>
 
-        <h2>Raftul nostru</h2>
+        <h2>
+            Raftul nostru
+        </h2>
 
         <p>
             Primele povești sunt încă în drum spre noi.
@@ -847,13 +817,9 @@ footer {
 
                 <div class="book-cover-content">
 
-                    <!-- ✨ SCHIMBĂ TITLUL AICI -->
-
                     <h3>
                         Prima poveste
                     </h3>
-
-                    <!-- ✨ SCHIMBĂ AUTORUL AICI -->
 
                     <small>
                         ÎNTRE RÂNDURI
@@ -862,8 +828,6 @@ footer {
                 </div>
 
             </div>
-
-            <!-- ✨ SCHIMBĂ INFORMAȚIILE CĂRȚII AICI -->
 
             <h3>
                 Primul titlu
@@ -942,9 +906,7 @@ footer {
 </section>
 
 
-<!-- =====================================================
-     AUTORI
-     ===================================================== -->
+<!-- AUTORI -->
 
 <section class="authors" id="autori">
 
@@ -954,7 +916,9 @@ footer {
             Capitolul IV · Autorul
         </div>
 
-        <h2>Poate următoarea poveste este a ta.</h2>
+        <h2>
+            Poate următoarea poveste este a ta.
+        </h2>
 
         <p>
             Nu căutăm doar manuscrise.
@@ -972,19 +936,16 @@ footer {
     </div>
 
 
-    <!-- ✨ ACEST BUTON VA FI LEGAT ULTERIOR
-         DE FORMULARUL REAL DE MANUSCRIS -->
+    <!-- BUTON CĂTRE PAGINA MANUSCRIS -->
 
-    <a href="#manuscris" class="button">
+    <a href="manuscris.html" class="button">
         Trimite manuscrisul
     </a>
 
 </section>
 
 
-<!-- =====================================================
-     SERVICII
-     ===================================================== -->
+<!-- SERVICII -->
 
 <section class="services" id="servicii">
 
@@ -994,7 +955,9 @@ footer {
             Capitolul V · Atelierul
         </div>
 
-        <h2>Din manuscris în carte.</h2>
+        <h2>
+            Din manuscris în carte.
+        </h2>
 
         <p>
             Fiecare poveste trece prin mai multe etape
@@ -1013,7 +976,9 @@ footer {
                 ✦
             </div>
 
-            <h3>Evaluare</h3>
+            <h3>
+                Evaluare
+            </h3>
 
             <p>
                 Analizăm manuscrisul și oferim feedback
@@ -1029,7 +994,9 @@ footer {
                 ✎
             </div>
 
-            <h3>Corectură</h3>
+            <h3>
+                Corectură
+            </h3>
 
             <p>
                 Verificăm ortografia, punctuația și
@@ -1045,7 +1012,9 @@ footer {
                 ❦
             </div>
 
-            <h3>Editare</h3>
+            <h3>
+                Editare
+            </h3>
 
             <p>
                 Lucrăm asupra textului și structurii
@@ -1061,7 +1030,9 @@ footer {
                 ♢
             </div>
 
-            <h3>Publicare</h3>
+            <h3>
+                Publicare
+            </h3>
 
             <p>
                 Pregătim cartea pentru publicarea
@@ -1076,9 +1047,7 @@ footer {
 </section>
 
 
-<!-- =====================================================
-     MANUSCRIS
-     ===================================================== -->
+<!-- MANUSCRIS -->
 
 <section class="manuscript" id="manuscris">
 
@@ -1101,9 +1070,10 @@ footer {
                 să o transformi într-o carte?
             </p>
 
-            <!-- ✨ FORMULARUL REAL VA FI ADAUGAT AICI -->
 
-            <a href="#contact" class="button">
+            <!-- BUTON CĂTRE PAGINA MANUSCRIS -->
+
+            <a href="manuscris.html" class="button">
                 Vreau să public
             </a>
 
@@ -1134,9 +1104,7 @@ footer {
 </section>
 
 
-<!-- =====================================================
-     CONTACT
-     ===================================================== -->
+<!-- CONTACT -->
 
 <section class="contact" id="contact">
 
@@ -1155,9 +1123,6 @@ footer {
             ne poți contacta.
         </p>
 
-        <!-- ✨ CÂND AI ADRESA REALĂ DE EMAIL,
-             ÎNLOCUIEȘTE ADRESA DE MAI JOS -->
-
         <a
             href="mailto:ADRESA-TA-DE-EMAIL"
             class="button"
@@ -1170,9 +1135,7 @@ footer {
 </section>
 
 
-<!-- =====================================================
-     FOOTER
-     ===================================================== -->
+<!-- FOOTER -->
 
 <footer>
 

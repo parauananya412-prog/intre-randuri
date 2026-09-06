@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Între Rânduri — Editură</title>
 
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
     margin: 0;
@@ -20,68 +25,130 @@ html {
 
 body {
     font-family: Georgia, "Times New Roman", serif;
-    background: #faf7f8;
-    color: #30272b;
+    background: #050812;
+    color: #f8f7f2;
     overflow-x: hidden;
 }
 
 :root {
-    --pink: #e8cfd7;
-    --pink-light: #f6e9ed;
-    --silver: #c8c8ce;
-    --silver-light: #eeeeF2;
-    --gold: #c7a45b;
-    --gold-light: #e5d09a;
-    --dark: #30272b;
-    --wine: #633c4b;
-    --white: #fffdfd;
-}
+    --black: #050812;
+    --black-soft: #080d1a;
+    --navy: #0b1224;
+    --blue: #172b52;
+    --blue-light: #4267a5;
 
-::selection {
-    background: var(--gold-light);
-    color: var(--dark);
+    --white: #f8f7f2;
+    --white-soft: #cfd5e2;
+
+    --gold: #d8b768;
+    --gold-light: #f0d99a;
+
+    --silver: #bfc7d6;
+
+    --line: rgba(216,183,104,.35);
 }
 
 
 /* =====================================================
-   NAVIGAȚIE
-   ===================================================== */
+   BODY / STARS
+===================================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.9) 1px, transparent 1px),
+        radial-gradient(circle, rgba(216,183,104,.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(100,160,255,.6) 1px, transparent 1px);
+
+    background-size:
+        170px 170px,
+        240px 240px,
+        310px 310px;
+
+    background-position:
+        20px 40px,
+        90px 120px,
+        150px 70px;
+
+    opacity: .32;
+}
+
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+section {
+    position: relative;
+    padding: 120px 8%;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    background: rgba(42,91,170,.08);
+    filter: blur(90px);
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
+
     z-index: 1000;
+
     padding: 20px 7%;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background: rgba(48,39,43,0.94);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(229,208,154,0.4);
+    justify-content: space-between;
+
+    background: rgba(5,8,18,.88);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(216,183,104,.25);
 }
 
 .logo {
-    color: white;
-    font-size: 22px;
-    letter-spacing: 4px;
+    color: var(--white);
+    font-size: 21px;
+    letter-spacing: 5px;
+    white-space: nowrap;
 }
 
 .logo span {
-    color: var(--gold-light);
+    color: var(--gold);
 }
 
 nav {
     display: flex;
+    align-items: center;
     gap: 25px;
 }
 
 nav a {
-    color: white;
+    color: #dce2ed;
     text-decoration: none;
+
     font-family: Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: 1px;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+
     transition: .3s;
 }
 
@@ -92,226 +159,419 @@ nav a:hover {
 
 /* =====================================================
    HERO
-   ===================================================== */
+===================================================== */
 
 .hero {
     min-height: 100vh;
+
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
     text-align: center;
-    padding: 150px 8% 100px;
-    position: relative;
+
+    padding-top: 150px;
 
     background:
-        radial-gradient(circle at 20% 30%, rgba(232,207,215,.8), transparent 30%),
-        radial-gradient(circle at 80% 60%, rgba(200,200,206,.5), transparent 30%),
-        linear-gradient(135deg, #fffafa, #f2e8eb, #f9f9fa);
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(41,77,139,.35),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(37,66,130,.2),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #03050b,
+            #071021,
+            #050812
+        );
 
     overflow: hidden;
 }
 
-.hero::before {
-    content: "✦";
-    position: absolute;
-    top: 18%;
-    left: 12%;
-    color: var(--gold);
-    font-size: 25px;
-    animation: sparkle 3s infinite;
-}
-
 .hero::after {
-    content: "✧";
+    content: "";
+
     position: absolute;
-    bottom: 20%;
-    right: 15%;
-    color: var(--gold);
-    font-size: 35px;
-    animation: sparkle 4s infinite;
+    width: 700px;
+    height: 700px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(67,104,175,.15),
+            transparent 65%
+        );
+
+    filter: blur(20px);
+
+    animation: moonGlow 7s ease-in-out infinite;
 }
 
-@keyframes sparkle {
+@keyframes moonGlow {
+
     0%,100% {
-        opacity: .3;
-        transform: scale(.8);
+        transform: scale(.95);
+        opacity: .6;
     }
 
     50% {
+        transform: scale(1.08);
         opacity: 1;
-        transform: scale(1.2);
     }
+
 }
 
+
+/* STAR PARTICLES */
+
+.hero .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero .stars::before,
+.hero .stars::after {
+    content: "✦   ✧        ✦      ·       ✧    ·       ✦       ✧";
+
+    position: absolute;
+
+    color: rgba(255,255,255,.7);
+
+    font-size: 14px;
+    letter-spacing: 20px;
+
+    animation: floatingStars 10s linear infinite;
+}
+
+.hero .stars::before {
+    top: 25%;
+    left: -10%;
+}
+
+.hero .stars::after {
+    top: 70%;
+    left: 20%;
+
+    color: rgba(216,183,104,.7);
+
+    animation-duration: 14s;
+}
+
+@keyframes floatingStars {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100vw);
+    }
+
+}
+
+
 .hero-content {
-    max-width: 900px;
+    position: relative;
+    z-index: 3;
+
+    max-width: 950px;
 }
 
 .chapter {
-    font-family: Arial, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 12px;
     color: var(--gold);
-    margin-bottom: 25px;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+
+    text-transform: uppercase;
+    letter-spacing: 6px;
+
+    margin-bottom: 30px;
 }
 
 .hero h1 {
-    font-size: clamp(60px, 10vw, 120px);
+    font-size: clamp(65px, 11vw, 135px);
+
     font-weight: normal;
-    letter-spacing: 5px;
-    color: var(--dark);
-    margin-bottom: 20px;
+
+    letter-spacing: 6px;
+
+    line-height: .95;
+
+    color: white;
+
+    text-shadow:
+        0 0 30px rgba(255,255,255,.08);
 }
 
 .hero h1 span {
-    color: var(--wine);
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 25px rgba(216,183,104,.25);
 }
 
 .hero-line {
-    width: 100px;
+    width: 130px;
     height: 1px;
-    background: var(--gold);
-    margin: 25px auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+    );
+
+    margin: 35px auto;
 }
 
 .hero p {
-    max-width: 700px;
+    max-width: 720px;
+
     margin: auto;
-    font-size: 21px;
-    line-height: 1.8;
-    color: #65585e;
+
+    color: #c7cfdd;
+
+    font-size: 20px;
+
+    line-height: 1.9;
+
     font-style: italic;
 }
 
 .button {
     display: inline-block;
-    margin-top: 35px;
-    padding: 16px 34px;
-    background: var(--wine);
-    color: white;
+
+    margin-top: 38px;
+
+    padding: 16px 35px;
+
+    color: #080a10;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--gold-light),
+            var(--gold)
+        );
+
     text-decoration: none;
-    border: 1px solid var(--gold);
+
     font-family: Arial, sans-serif;
-    font-size: 13px;
-    letter-spacing: 1px;
-    transition: .3s;
+
+    font-size: 12px;
+
+    letter-spacing: 1.5px;
+
+    border: 1px solid var(--gold-light);
+
+    transition: .35s;
+
+    box-shadow:
+        0 0 25px rgba(216,183,104,.08);
 }
 
 .button:hover {
-    background: var(--gold);
-    color: var(--dark);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 35px rgba(216,183,104,.2);
+
+    background: white;
 }
 
 
 /* =====================================================
-   TRANZIȚIE
-   ===================================================== */
+   DIVIDER
+===================================================== */
 
 .page-turn {
-    height: 90px;
+    height: 100px;
+
     display: flex;
-    align-items: center;
     justify-content: center;
-    background: #fff;
+    align-items: center;
+
+    background: #050812;
+
     color: var(--gold);
-    font-size: 25px;
-    letter-spacing: 12px;
+
+    letter-spacing: 20px;
+
+    font-size: 18px;
+
+    border-top: 1px solid rgba(216,183,104,.12);
+    border-bottom: 1px solid rgba(216,183,104,.12);
 }
 
 
 /* =====================================================
-   SECȚIUNI
-   ===================================================== */
-
-section {
-    padding: 110px 9%;
-}
+   HEADINGS
+===================================================== */
 
 .section-heading {
-    text-align: center;
     max-width: 800px;
-    margin: auto auto 60px;
+
+    margin: 0 auto 70px;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
 }
 
 .section-number {
-    font-family: Arial, sans-serif;
     color: var(--gold);
-    font-size: 12px;
-    letter-spacing: 4px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
     text-transform: uppercase;
+
+    margin-bottom: 18px;
 }
 
 .section-heading h2 {
-    font-size: clamp(38px, 5vw, 60px);
+    font-size: clamp(40px, 6vw, 65px);
+
     font-weight: normal;
-    margin: 12px 0 20px;
+
+    color: white;
+
+    margin-bottom: 22px;
 }
 
 .section-heading p {
-    color: #71656b;
-    font-size: 18px;
+    color: var(--white-soft);
+
+    font-size: 17px;
+
     line-height: 1.8;
 }
 
 
 /* =====================================================
-   POVESTEA
-   ===================================================== */
+   POVESTEA NOASTRĂ
+===================================================== */
 
 .story {
     background:
-        linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)),
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 35px,
-            rgba(100,80,90,.04) 36px
-        );
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(32,69,130,.2),
+            transparent 35%
+        ),
+        #070b16;
+}
+
+.story::before {
+    right: -150px;
+    top: 100px;
 }
 
 .story-box {
-    max-width: 850px;
+    max-width: 900px;
+
     margin: auto;
-    padding: 60px;
-    background: rgba(255,255,255,.8);
-    border-left: 2px solid var(--gold);
-    border-right: 2px solid var(--pink);
-    box-shadow: 0 20px 60px rgba(80,60,70,.08);
+
+    position: relative;
+    z-index: 2;
+
+    padding: 65px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,25,48,.95),
+            rgba(7,12,25,.95)
+        );
+
+    border: 1px solid rgba(216,183,104,.25);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.4);
+}
+
+.story-box::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    color: var(--gold);
+
+    font-size: 18px;
 }
 
 .story-box p {
-    font-size: 20px;
+    color: #d4dae4;
+
+    font-size: 19px;
+
     line-height: 2;
+
     margin-bottom: 25px;
 }
 
 .dropcap::first-letter {
     float: left;
-    font-size: 70px;
-    line-height: .8;
-    padding-right: 10px;
-    color: var(--wine);
+
+    color: var(--gold);
+
+    font-size: 75px;
+
+    line-height: .75;
+
+    padding-right: 12px;
 }
 
 
 /* =====================================================
    BIBLIOTECA
-   ===================================================== */
+===================================================== */
 
 .library {
     background:
-        radial-gradient(circle at 50% 0%, #e8cfd7, transparent 35%),
-        #f3eef0;
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(35,66,124,.3),
+            transparent 40%
+        ),
+        #040711;
+}
+
+.library::before {
+    left: -150px;
+    top: 200px;
 }
 
 .bookshelf {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 45px;
     max-width: 1100px;
+
     margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 45px;
+
+    position: relative;
+    z-index: 2;
 }
 
 .book-card {
@@ -319,331 +579,581 @@ section {
 }
 
 .book-cover {
-    height: 390px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 35px;
+    height: 400px;
+
+    padding: 30px;
+
     position: relative;
 
-    box-shadow:
-        12px 18px 35px rgba(50,35,40,.25),
-        inset 0 0 0 1px rgba(255,255,255,.25);
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
 
     transition: .5s;
+
+    box-shadow:
+        15px 20px 45px rgba(0,0,0,.55);
 }
 
 .book-cover:hover {
-    transform: translateY(-12px) rotate(-1deg);
+    transform:
+        translateY(-12px)
+        rotate(-1deg);
 
     box-shadow:
-        18px 28px 45px rgba(50,35,40,.3);
+        20px 30px 60px rgba(0,0,0,.7);
 }
 
 .book-cover::before {
     content: "";
+
     position: absolute;
-    left: 12px;
+
+    left: 15px;
     top: 0;
     bottom: 0;
+
     width: 3px;
-    background: rgba(255,255,255,.25);
+
+    background: rgba(255,255,255,.2);
 }
 
 .book-cover-content {
-    color: white;
-    border: 1px solid rgba(255,255,255,.5);
     width: 100%;
     height: 100%;
+
     padding: 30px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
+
+    border: 1px solid rgba(216,183,104,.55);
 }
 
 .book-cover h3 {
-    font-size: 30px;
+    font-size: 31px;
+
     font-weight: normal;
+
+    color: white;
 }
 
 .book-cover small {
     margin-top: 30px;
+
+    color: var(--gold-light);
+
     font-family: Arial, sans-serif;
-    letter-spacing: 3px;
+
+    letter-spacing: 4px;
 }
 
 .cover-one {
     background:
-        linear-gradient(145deg, #6d4655, #b98599);
+        radial-gradient(
+            circle at 70% 25%,
+            rgba(70,112,190,.55),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #050814,
+            #101d3a,
+            #071021
+        );
 }
 
 .cover-two {
     background:
-        linear-gradient(145deg, #71747d, #bfc0c8);
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(216,183,104,.2),
+            transparent 25%
+        ),
+        linear-gradient(
+            145deg,
+            #090b15,
+            #192743,
+            #050711
+        );
 }
 
 .cover-three {
     background:
-        linear-gradient(145deg, #a98645, #d8bd7c);
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(92,128,193,.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #060914,
+            #12284d,
+            #070b16
+        );
 }
 
 .book-card h3 {
-    margin-top: 22px;
-    font-size: 23px;
+    margin-top: 25px;
+
+    font-size: 22px;
+
     font-weight: normal;
+
+    color: white;
 }
 
 .book-card p {
-    margin-top: 7px;
-    color: #766b70;
+    margin-top: 8px;
+
+    color: #929caf;
+
+    font-size: 14px;
 }
 
 
 /* =====================================================
    AUTORI
-   ===================================================== */
+===================================================== */
 
 .authors {
     background:
-        radial-gradient(circle at 80% 30%, rgba(229,208,154,.25), transparent 30%),
-        #30272b;
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(38,74,140,.22),
+            transparent 45%
+        ),
+        #060a15;
 
-    color: white;
     text-align: center;
 }
 
-.authors .section-number {
-    color: var(--gold-light);
-}
-
-.authors .section-heading p {
-    color: #d8cdd1;
-}
-
 .author-quote {
-    max-width: 800px;
+    max-width: 850px;
+
     margin: 50px auto;
 
-    font-size: 28px;
-    font-style: italic;
-    line-height: 1.6;
+    color: #e8ebf1;
 
-    color: #f4e9ed;
+    font-size: 27px;
+
+    line-height: 1.7;
+
+    font-style: italic;
 }
 
 .authors .button {
+    color: white;
+
     background: transparent;
+
+    border-color: var(--gold);
 }
 
 .authors .button:hover {
+    color: #080a10;
+
     background: var(--gold);
 }
 
 
 /* =====================================================
    SERVICII
-   ===================================================== */
+===================================================== */
 
 .services {
-    background: #faf7f8;
+    background:
+        linear-gradient(
+            180deg,
+            #070b16,
+            #050812
+        );
 }
 
 .service-grid {
+    max-width: 1150px;
+
+    margin: auto;
+
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 20px;
+
+    position: relative;
+    z-index: 2;
 }
 
 .service {
-    background: white;
-    padding: 40px 25px;
+    padding: 45px 25px;
+
     text-align: center;
-    border: 1px solid #e3d9dd;
-    transition: .3s;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(16,27,51,.9),
+            rgba(7,12,24,.95)
+        );
+
+    border: 1px solid rgba(191,199,214,.14);
+
+    transition: .35s;
 }
 
 .service:hover {
-    transform: translateY(-6px);
-    border-color: var(--gold);
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(216,183,104,.5);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.35);
 }
 
 .service-icon {
-    font-size: 32px;
-    margin-bottom: 20px;
+    color: var(--gold);
+
+    font-size: 30px;
+
+    margin-bottom: 22px;
 }
 
 .service h3 {
+    color: white;
+
     font-size: 20px;
+
     font-weight: normal;
-    margin-bottom: 12px;
+
+    margin-bottom: 13px;
 }
 
 .service p {
+    color: #9ea8ba;
+
     font-family: Arial, sans-serif;
-    color: #776c72;
-    font-size: 14px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
 }
 
 
 /* =====================================================
    MANUSCRIS
-   ===================================================== */
+===================================================== */
 
 .manuscript {
     background:
-        linear-gradient(135deg, #f7e9ed, #e9e9ed);
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(39,79,149,.3),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(216,183,104,.08),
+            transparent 25%
+        ),
+        #050812;
 }
 
 .manuscript-inner {
-    max-width: 1000px;
+    max-width: 1050px;
+
     margin: auto;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 70px;
 
     align-items: center;
+
+    position: relative;
+    z-index: 2;
 }
 
 .manuscript-text h2 {
-    font-size: 50px;
+    color: white;
+
+    font-size: clamp(40px, 5vw, 60px);
+
     font-weight: normal;
-    margin-bottom: 20px;
+
+    margin-bottom: 25px;
 }
 
 .manuscript-text p {
-    color: #6d6167;
+    color: #aeb7c7;
+
     font-size: 18px;
-    line-height: 1.8;
+
+    line-height: 1.9;
 }
 
 .manuscript-paper {
-    background: #fff;
-    padding: 50px 40px;
-    box-shadow: 10px 15px 40px rgba(50,40,45,.15);
+    padding: 55px 45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111c35,
+            #080d1c
+        );
+
+    border: 1px solid rgba(216,183,104,.35);
+
+    box-shadow:
+        15px 25px 60px rgba(0,0,0,.5);
+
     transform: rotate(2deg);
-    border-top: 4px solid var(--gold);
 }
 
 .manuscript-paper span {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
     color: var(--gold);
-    letter-spacing: 3px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
 }
 
 .manuscript-paper h3 {
-    font-size: 30px;
+    color: white;
+
+    font-size: 31px;
+
     font-weight: normal;
-    margin: 20px 0;
+
+    margin: 22px 0;
 }
 
 .manuscript-paper p {
-    color: #777;
+    color: #aeb7c7;
+
+    line-height: 1.8;
+
     font-style: italic;
 }
 
 
 /* =====================================================
    CONTACT
-   ===================================================== */
+===================================================== */
 
 .contact {
     text-align: center;
-    background: white;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(40,75,140,.3),
+            transparent 40%
+        ),
+        #040711;
 }
 
-.contact p {
-    max-width: 650px;
+.contact-box {
+    max-width: 900px;
+
     margin: auto;
-    color: #71666c;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 20px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.contact-card {
+    padding: 35px 20px;
+
+    background: rgba(13,22,43,.8);
+
+    border: 1px solid rgba(191,199,214,.15);
+}
+
+.contact-card .icon {
+    color: var(--gold);
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    color: white;
+
+    font-weight: normal;
+
     font-size: 18px;
+
+    margin-bottom: 10px;
+}
+
+.contact-card a,
+.contact-card p {
+    color: #aeb7c7;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: var(--gold-light);
 }
 
 
 /* =====================================================
    FOOTER
-   ===================================================== */
+===================================================== */
 
 footer {
-    background: #30272b;
-    color: #d8cdd1;
+    padding: 65px 20px;
+
     text-align: center;
-    padding: 55px 20px;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
+
+    background: #02040a;
+
+    border-top: 1px solid rgba(216,183,104,.2);
 }
 
 .footer-logo {
     color: white;
-    font-family: Georgia, serif;
+
     font-size: 25px;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
+
+    letter-spacing: 6px;
+}
+
+.footer-logo span {
+    color: var(--gold);
 }
 
 .footer-line {
-    width: 70px;
+    width: 80px;
+
     height: 1px;
-    background: var(--gold);
-    margin: 20px auto;
+
+    margin: 22px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold),
+            transparent
+        );
+}
+
+footer p {
+    color: #737d90;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.7;
 }
 
 
 /* =====================================================
-   TELEFON
-   ===================================================== */
+   RESPONSIVE
+===================================================== */
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
 
     header {
-        padding: 15px 5%;
+        padding: 16px 5%;
+
         flex-direction: column;
+
         gap: 15px;
     }
 
     nav {
-        gap: 12px;
+        gap: 14px;
+
         flex-wrap: wrap;
+
         justify-content: center;
     }
 
     .hero {
-        padding-top: 180px;
-    }
-
-    .story-box {
-        padding: 35px 25px;
+        padding-top: 190px;
     }
 
     .bookshelf {
         grid-template-columns: 1fr;
+
         max-width: 400px;
     }
 
     .service-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns:
+            1fr 1fr;
     }
 
     .manuscript-inner {
         grid-template-columns: 1fr;
     }
 
+    .contact-box {
+        grid-template-columns: 1fr;
+    }
+
 }
 
-@media (max-width: 500px) {
+
+@media (max-width: 550px) {
 
     section {
-        padding: 75px 6%;
+        padding: 85px 6%;
+    }
+
+    .logo {
+        font-size: 17px;
+
+        letter-spacing: 3px;
+    }
+
+    nav {
+        gap: 9px;
+    }
+
+    nav a {
+        font-size: 10px;
     }
 
     .hero h1 {
-        font-size: 55px;
+        font-size: 58px;
     }
 
     .hero p {
-        font-size: 18px;
+        font-size: 17px;
+    }
+
+    .story-box {
+        padding: 35px 25px;
     }
 
     .service-grid {
@@ -654,20 +1164,23 @@ footer {
         height: 350px;
     }
 
-    .manuscript-text h2 {
-        font-size: 40px;
+    .manuscript-paper {
+        transform: none;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- MENIU -->
+<!-- =====================================================
+     MENIU
+===================================================== -->
 
 <header>
 
@@ -704,9 +1217,13 @@ footer {
 </header>
 
 
-<!-- PRIMA PAGINĂ -->
+<!-- =====================================================
+     ACASĂ
+===================================================== -->
 
 <section class="hero" id="acasa">
+
+    <div class="stars"></div>
 
     <div class="hero-content">
 
@@ -721,12 +1238,13 @@ footer {
         <div class="hero-line"></div>
 
         <p>
-            „Înainte ca o carte să ajungă în mâinile unui cititor,
-            există o poveste care caută un loc unde să înceapă.”
+            Unele povești sunt scrise pentru a fi citite.
+            Altele sunt scrise pentru a fi ținute minte.
+            Noi le oferim locul de unde pot începe.
         </p>
 
         <a href="#poveste" class="button">
-            Deschide povestea
+            Descoperă povestea ✦
         </a>
 
     </div>
@@ -739,7 +1257,9 @@ footer {
 </div>
 
 
-<!-- POVESTEA EDITURII -->
+<!-- =====================================================
+     POVESTEA NOASTRĂ
+===================================================== -->
 
 <section class="story" id="poveste">
 
@@ -750,11 +1270,12 @@ footer {
         </div>
 
         <h2>
-            Totul începe cu o pagină.
+            Acolo unde poveștile prind lumină.
         </h2>
 
         <p>
-            Iar uneori, acea pagină poate schimba totul.
+            O editură construită în jurul poveștilor,
+            autorilor și paginilor care merită descoperite.
         </p>
 
     </div>
@@ -763,20 +1284,26 @@ footer {
     <div class="story-box">
 
         <p class="dropcap">
-            Există povești care nu au fost încă descoperite.
-            Manuscrise ascunse în sertare, personaje care așteaptă
-            să prindă viață și autori care încă nu știu unde îi poate
-            duce prima lor pagină.
+
+            Există manuscrise care rămân ascunse ani întregi.
+            Există personaje care așteaptă să fie descoperite
+            și autori care au nevoie doar de un loc în care
+            povestea lor să poată începe.
+
         </p>
 
         <p>
-            Între Rânduri s-a născut din dorința de a crea un loc
-            pentru aceste povești.
+
+            Între Rânduri își propune să fie acel loc.
+
         </p>
 
         <p>
-            Un loc unde un manuscris poate deveni mai mult decât
-            un fișier pe un computer. Poate deveni o carte.
+
+            De la primul manuscris până la forma finală a cărții,
+            fiecare poveste merită atenție, răbdare și respect
+            pentru vocea autorului.
+
         </p>
 
     </div>
@@ -784,7 +1311,9 @@ footer {
 </section>
 
 
-<!-- BIBLIOTECA -->
+<!-- =====================================================
+     BIBLIOTECA
+===================================================== -->
 
 <section class="library" id="carti">
 
@@ -795,12 +1324,12 @@ footer {
         </div>
 
         <h2>
-            Raftul nostru
+            Biblioteca Între Rânduri
         </h2>
 
         <p>
-            Primele povești sunt încă în drum spre noi.
-            În curând, acest raft va fi plin.
+            Rafturile noastre sunt încă la început.
+            Primele povești vor apărea aici în curând.
         </p>
 
     </div>
@@ -809,8 +1338,6 @@ footer {
     <div class="bookshelf">
 
 
-        <!-- CARTEA 1 -->
-
         <div class="book-card">
 
             <div class="book-cover cover-one">
@@ -818,11 +1345,11 @@ footer {
                 <div class="book-cover-content">
 
                     <h3>
-                        Prima poveste
+                        Prima pagină
                     </h3>
 
                     <small>
-                        ÎNTRE RÂNDURI
+                        ÎN CURÂND
                     </small>
 
                 </div>
@@ -830,17 +1357,15 @@ footer {
             </div>
 
             <h3>
-                Primul titlu
+                Prima carte
             </h3>
 
             <p>
-                În curând, aici va apărea descrierea cărții.
+                Un nou început pentru biblioteca noastră.
             </p>
 
         </div>
 
-
-        <!-- CARTEA 2 -->
 
         <div class="book-card">
 
@@ -849,11 +1374,11 @@ footer {
                 <div class="book-cover-content">
 
                     <h3>
-                        O voce nouă
+                        O poveste nouă
                     </h3>
 
                     <small>
-                        ÎNTRE RÂNDURI
+                        ÎN CURÂND
                     </small>
 
                 </div>
@@ -865,13 +1390,11 @@ footer {
             </h3>
 
             <p>
-                O nouă poveste își caută locul în bibliotecă.
+                Următoarea poveste își caută locul.
             </p>
 
         </div>
 
-
-        <!-- CARTEA 3 -->
 
         <div class="book-card">
 
@@ -880,11 +1403,11 @@ footer {
                 <div class="book-cover-content">
 
                     <h3>
-                        Între pagini
+                        Între stele
                     </h3>
 
                     <small>
-                        ÎNTRE RÂNDURI
+                        ÎN CURÂND
                     </small>
 
                 </div>
@@ -896,24 +1419,27 @@ footer {
             </h3>
 
             <p>
-                Următoarea carte poate începe chiar aici.
+                Un nou titlu va apărea pe rafturile noastre.
             </p>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- AUTORI -->
+<!-- =====================================================
+     AUTORI
+===================================================== -->
 
 <section class="authors" id="autori">
 
     <div class="section-heading">
 
         <div class="section-number">
-            Capitolul IV · Autorul
+            Capitolul IV · Autorii
         </div>
 
         <h2>
@@ -921,8 +1447,8 @@ footer {
         </h2>
 
         <p>
-            Nu căutăm doar manuscrise.
-            Căutăm povești în care oamenii vor vrea să locuiască.
+            Căutăm voci noi, idei originale și povești
+            care merită să ajungă la cititori.
         </p>
 
     </div>
@@ -930,22 +1456,23 @@ footer {
 
     <div class="author-quote">
 
-        „Fiecare autor începe cu o pagină albă.
-        Important este ce alege să scrie pe ea.”
+        „Fiecare carte începe cu o idee,
+        dar devine poveste abia atunci când cineva
+        are curajul să o scrie.”
 
     </div>
 
 
-    <!-- BUTON CĂTRE PAGINA MANUSCRIS -->
-
     <a href="manuscris.html" class="button">
-        Trimite manuscrisul
+        Trimite manuscrisul ✦
     </a>
 
 </section>
 
 
-<!-- SERVICII -->
+<!-- =====================================================
+     SERVICII
+===================================================== -->
 
 <section class="services" id="servicii">
 
@@ -960,8 +1487,8 @@ footer {
         </h2>
 
         <p>
-            Fiecare poveste trece prin mai multe etape
-            înainte să ajungă la cititor.
+            O poveste bună merită să fie îngrijită
+            înainte să ajungă în mâinile cititorilor.
         </p>
 
     </div>
@@ -981,8 +1508,8 @@ footer {
             </h3>
 
             <p>
-                Analizăm manuscrisul și oferim feedback
-                asupra poveștii.
+                Analizăm manuscrisul, povestea,
+                structura și potențialul editorial.
             </p>
 
         </div>
@@ -995,12 +1522,12 @@ footer {
             </div>
 
             <h3>
-                Corectură
+                Editare
             </h3>
 
             <p>
-                Verificăm ortografia, punctuația și
-                exprimarea.
+                Lucrăm asupra textului, structurii,
+                personajelor și coerenței poveștii.
             </p>
 
         </div>
@@ -1013,12 +1540,12 @@ footer {
             </div>
 
             <h3>
-                Editare
+                Corectură
             </h3>
 
             <p>
-                Lucrăm asupra textului și structurii
-                pentru a-i da forma potrivită.
+                Verificăm exprimarea, ortografia,
+                punctuația și forma finală a textului.
             </p>
 
         </div>
@@ -1035,8 +1562,8 @@ footer {
             </h3>
 
             <p>
-                Pregătim cartea pentru publicarea
-                digitală.
+                Pregătim manuscrisul pentru publicare
+                și pentru întâlnirea cu cititorii.
             </p>
 
         </div>
@@ -1047,9 +1574,11 @@ footer {
 </section>
 
 
-<!-- MANUSCRIS -->
+<!-- =====================================================
+     MANUSCRIS
+===================================================== -->
 
-<section class="manuscript" id="manuscris">
+<section class="manuscript">
 
     <div class="manuscript-inner">
 
@@ -1061,20 +1590,17 @@ footer {
             </div>
 
             <h2>
-                Povestea ta începe aici.
+                Povestea ta poate începe aici.
             </h2>
 
             <p>
-                Ai un roman, o colecție de povestiri,
-                poezii sau o altă poveste pe care vrei
-                să o transformi într-o carte?
+                Ai terminat un roman, o colecție de povestiri,
+                poezii sau o altă creație și vrei să o trimiți
+                spre evaluare?
             </p>
 
-
-            <!-- BUTON CĂTRE PAGINA MANUSCRIS -->
-
             <a href="manuscris.html" class="button">
-                Vreau să public
+                Vreau să public ✦
             </a>
 
         </div>
@@ -1091,9 +1617,9 @@ footer {
             </h3>
 
             <p>
-                „Poate că aceasta este prima pagină
-                a următoarei cărți din biblioteca
-                Între Rânduri.”
+                „Poate că următoarea carte din biblioteca
+                Între Rânduri începe cu pagina pe care
+                tocmai ai scris-o.”
             </p>
 
         </div>
@@ -1104,43 +1630,97 @@ footer {
 </section>
 
 
-<!-- CONTACT -->
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
 <section class="contact" id="contact">
 
     <div class="section-heading">
 
         <div class="section-number">
-            Ultima pagină
+            Ultima pagină · Contact
         </div>
 
         <h2>
-            Poveștile nu se termină aici.
+            Să vorbim despre povești.
         </h2>
 
         <p>
-            Pentru manuscrise, colaborări sau întrebări,
-            ne poți contacta.
+            Pentru colaborări, întrebări sau informații
+            despre Între Rânduri, ne poți contacta.
         </p>
 
-        <a
-            href="mailto:ADRESA-TA-DE-EMAIL"
-            class="button"
-        >
-            Scrie-ne
-        </a>
+    </div>
+
+
+    <div class="contact-box">
+
+
+        <div class="contact-card">
+
+            <div class="icon">
+                ☎
+            </div>
+
+            <h3>
+                Telefon
+            </h3>
+
+            <a href="tel:07XXXXXXXX">
+                07XX XXX XXX
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="icon">
+                ✉
+            </div>
+
+            <h3>
+                E-mail
+            </h3>
+
+            <a href="mailto:ADRESA-TA-DE-EMAIL">
+                ADRESA-TA-DE-EMAIL
+            </a>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="icon">
+                ✦
+            </div>
+
+            <h3>
+                Manuscrise
+            </h3>
+
+            <a href="manuscris.html">
+                Trimite un manuscris
+            </a>
+
+        </div>
+
 
     </div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
     <div class="footer-logo">
-        ÎNTRE RÂNDURI
+        ÎNTRE <span>RÂNDURI</span>
     </div>
 
     <div class="footer-line"></div>
@@ -1152,7 +1732,9 @@ footer {
 
     <br>
 
-    © 2026 Între Rânduri — Editură digitală
+    <p>
+        © 2026 Între Rânduri — Toate drepturile rezervate.
+    </p>
 
 </footer>
 

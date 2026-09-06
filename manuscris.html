@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Trimite manuscrisul | Între Rânduri</title>
+
+  <style>
+    :root {
+      --pink: #e8cfd7;
+      --pink-light: #f6e9ed;
+      --silver: #c8c8ce;
+      --silver-light: #eeeeF2;
+      --gold: #c7a45b;
+      --gold-light: #e5d09a;
+      --dark: #30272b;
+      --wine: #633c4b;
+      --white: #fffdfd;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top left, #f6e9ed 0%, transparent 35%),
+        linear-gradient(135deg, #fffdfd, #f4eef0);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(48, 39, 43, 0.96);
+      backdrop-filter: blur(10px);
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .logo {
+      color: var(--gold-light);
+      font-size: 22px;
+      letter-spacing: 3px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 28px;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold-light);
+    }
+
+    /* HERO */
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px 70px;
+      position: relative;
+    }
+
+    .chapter {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      font-weight: normal;
+      color: var(--wine);
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      font-size: 19px;
+      line-height: 1.8;
+      color: #675b60;
+    }
+
+    .ornament {
+      margin: 40px auto;
+      color: var(--gold);
+      font-size: 24px;
+      letter-spacing: 12px;
+    }
+
+    /* MAIN */
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .paper {
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(199,164,91,0.35);
+      box-shadow:
+        0 20px 60px rgba(48,39,43,0.10),
+        inset 0 0 40px rgba(232,207,215,0.12);
+      padding: 55px;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .paper::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      bottom: 18px;
+      width: 1px;
+      background: var(--silver);
+      opacity: 0.5;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--wine);
+      font-size: 32px;
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #75686e;
+      line-height: 1.7;
+      max-width: 650px;
+      margin: 0 auto 45px;
+    }
+
+    /* FORM */
+
+    form {
+      max-width: 750px;
+      margin: auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .field {
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--wine);
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px 16px;
+      border: 1px solid var(--silver);
+      background: #fff;
+      font-family: inherit;
+      font-size: 16px;
+      color: var(--dark);
+      border-radius: 3px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(199,164,91,0.12);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .upload-box {
+      border: 1px dashed var(--gold);
+      background: var(--pink-light);
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 25px;
+      border-radius: 4px;
+    }
+
+    .upload-icon {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .upload-box p {
+      color: #6e6066;
+      font-size: 14px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    input[type="file"] {
+      border: none;
+      background: transparent;
+      padding: 5px;
+    }
+
+    /* CHECKBOX */
+
+    .check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 25px 0;
+      font-size: 14px;
+      color: #6e6066;
+      line-height: 1.5;
+    }
+
+    .check input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    /* BUTTON */
+
+    .submit-btn {
+      display: block;
+      margin: 35px auto 0;
+      padding: 16px 38px;
+      background: var(--wine);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: 0.3s;
+      box-shadow: 0 8px 25px rgba(99,60,75,0.22);
+    }
+
+    .submit-btn:hover {
+      background: var(--dark);
+      transform: translateY(-2px);
+    }
+
+    /* INFO */
+
+    .info {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .info-card {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--pink-light);
+      border-top: 2px solid var(--gold);
+    }
+
+    .info-card .icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .info-card h3 {
+      color: var(--wine);
+      font-size: 18px;
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+
+    .info-card p {
+      color: #75686e;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 80px;
+      padding: 45px 20px;
+      text-align: center;
+      background: var(--dark);
+      color: var(--silver-light);
+    }
+
+    footer .footer-logo {
+      color: var(--gold-light);
+      letter-spacing: 4px;
+      margin-bottom: 12px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: var(--silver);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding-top: 70px;
+      }
+
+      .paper {
+        padding: 35px 25px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+    <div class="logo">ÎNTRE RÂNDURI</div>
+
+    <div>
+      <a href="index.html">Acasă</a>
+      <a href="index.html#poveste">Povestea noastră</a>
+      <a href="index.html#biblioteca">Bibliotecă</a>
+      <a href="manuscris.html">Trimite manuscrisul</a>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="chapter">
+      Capitolul V · Atelierul
+    </div>
+
+    <h1>Trimite manuscrisul</h1>
+
+    <p>
+      Fiecare carte începe cu o idee, o emoție și câteva pagini.
+      Dacă ai o poveste care își caută locul între rânduri,
+      vrem să o descoperim.
+    </p>
+
+    <div class="ornament">
+      ✦ · ✧ · ✦
+    </div>
+
+  </section>
+
+
+  <!-- FORMULAR -->
+
+  <main class="container">
+
+    <section class="paper">
+
+      <h2 class="section-title">
+        Prima pagină a poveștii tale
+      </h2>
+
+      <p class="section-subtitle">
+        Completează informațiile de mai jos. Formularul este momentan
+        o versiune de prezentare și va fi conectat ulterior la sistemul
+        real de primire a manuscriselor.
+      </p>
+
+
+      <form>
+
+        <div class="form-row">
+
+          <div class="field">
+            <label for="nume">Numele autorului</label>
+            <input
+              type="text"
+              id="nume"
+              name="nume"
+              placeholder="Numele tău"
+            >
+          </div>
+
+          <div class="field">
+            <label for="email">Adresa de e-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="exemplu@email.com"
+            >
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div class="field">
+            <label for="titlu">Titlul manuscrisului</label>
+            <input
+              type="text"
+              id="titlu"
+              name="titlu"
+              placeholder="Titlul cărții"
+            >
+          </div>
+
+          <div class="field">
+            <label for="gen">Genul literar</label>
+
+            <select id="gen" name="gen">
+
+              <option value="">
+                Selectează genul
+              </option>
+
+              <option>
+                Romance
+              </option>
+
+              <option>
+                Fantasy
+              </option>
+
+              <option>
+                Thriller
+              </option>
+
+              <option>
+                Mystery
+              </option>
+
+              <option>
+                Young Adult
+              </option>
+
+              <option>
+                Ficțiune
+              </option>
+
+              <option>
+                Poezie
+              </option>
+
+              <option>
+                Non-ficțiune
+              </option>
+
+              <option>
+                Altul
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="field">
+
+          <label for="descriere">
+            Spune-ne câteva cuvinte despre carte
+          </label>
+
+          <textarea
+            id="descriere"
+            name="descriere"
+            placeholder="Despre ce este povestea ta?"
+          ></textarea>
+
+        </div>
+
+
+        <!-- UPLOAD -->
+
+        <div class="upload-box">
+
+          <div class="upload-icon">
+            📖
+          </div>
+
+          <p>
+            Încarcă manuscrisul tău.
+            <br>
+            Formatele recomandate vor fi PDF sau DOCX.
+          </p>
+
+          <input
+            type="file"
+            accept=".pdf,.doc,.docx"
+          >
+
+        </div>
+
+
+        <label class="check">
+
+          <input type="checkbox">
+
+          <span>
+            Confirm că informațiile furnizate îmi aparțin și că
+            manuscrisul trimis este creația mea sau am drepturile
+            necesare pentru a-l transmite.
+          </span>
+
+        </label>
+
+
+        <button
+          type="button"
+          class="submit-btn"
+          onclick="alert('Formularul va fi conectat la sistemul real de trimitere în etapa următoare.')"
+        >
+          Trimite manuscrisul ✦
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- INFO -->
+
+    <section class="info">
+
+      <div class="info-card">
+
+        <div class="icon">✒️</div>
+
+        <h3>Originalitate</h3>
+
+        <p>
+          Ne interesează poveștile autentice și vocile
+          care au ceva de spus.
+        </p>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <div class="icon">📜</div>
+
+        <h3>Evaluare</h3>
+
+        <p>
+          Fiecare manuscris poate fi analizat înainte
+          de a fi luată o decizie editorială.
+        </p>
+
+      </div>
+
+
+      <div class="info-card">
+
+        <div class="icon">✨</div>
+
+        <h3>O nouă poveste</h3>
+
+        <p>
+          Poate că următoarea carte din biblioteca
+          Între Rânduri va fi chiar a ta.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-logo">
+      ÎNTRE RÂNDURI
+    </div>
+
+    <p>
+      Unele povești se termină. Cele mai bune rămân între rânduri.
+    </p>
+
+  </footer>
+
+</body>
+</html>

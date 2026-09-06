@@ -263,6 +263,8 @@
       letter-spacing: 1px;
       transition: 0.3s;
       box-shadow: 0 8px 25px rgba(99,60,75,0.22);
+      text-decoration: none;
+      text-align: center;
     }
 
     .submit-btn:hover {
@@ -409,9 +411,9 @@
       </h2>
 
       <p class="section-subtitle">
-        Completează informațiile de mai jos. Formularul este momentan
-        o versiune de prezentare și va fi conectat ulterior la sistemul
-        real de primire a manuscriselor.
+        Completează informațiile de mai jos și trimite-ne manuscrisul.
+        După apăsarea butonului, vei fi redirecționat către formularul
+        nostru de trimitere.
       </p>
 
 
@@ -421,6 +423,7 @@
 
           <div class="field">
             <label for="nume">Numele autorului</label>
+
             <input
               type="text"
               id="nume"
@@ -429,8 +432,10 @@
             >
           </div>
 
+
           <div class="field">
             <label for="email">Adresa de e-mail</label>
+
             <input
               type="email"
               id="email"
@@ -446,6 +451,7 @@
 
           <div class="field">
             <label for="titlu">Titlul manuscrisului</label>
+
             <input
               type="text"
               id="titlu"
@@ -454,8 +460,12 @@
             >
           </div>
 
+
           <div class="field">
-            <label for="gen">Genul literar</label>
+
+            <label for="gen">
+              Genul literar
+            </label>
 
             <select id="gen" name="gen">
 
@@ -543,6 +553,8 @@
         </div>
 
 
+        <!-- CONFIRMARE -->
+
         <label class="check">
 
           <input type="checkbox">
@@ -556,13 +568,17 @@
         </label>
 
 
-        <button
-          type="button"
+        <!-- BUTON GOOGLE FORMS -->
+
+        <a
+          href=https://docs.google.com/forms/d/e/1FAIpQLSccSNjXWuzzZp_jONHy6Bw7vEmiRzvMqwKy6Q6Eusv1fMcfzA/viewform?usp=header
+          target="_blank"
+          rel="noopener noreferrer"
           class="submit-btn"
-          onclick="alert('Formularul va fi conectat la sistemul real de trimitere în etapa următoare.')"
         >
           Trimite manuscrisul ✦
-        </button>
+        </a>
+
 
       </form>
 

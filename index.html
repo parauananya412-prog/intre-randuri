@@ -3,9 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Între Rânduri — Editură</title>
+
+  <title>Între Rânduri — Editură digitală</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Georgia, serif;
@@ -16,43 +25,54 @@
     header {
       background: #211f1c;
       color: white;
-      padding: 25px 8%;
+      padding: 22px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo {
-      font-size: 28px;
+      font-size: 25px;
       letter-spacing: 2px;
+      font-weight: bold;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 25px;
+      margin-left: 22px;
       font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     .hero {
-      min-height: 70vh;
+      min-height: 78vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 70px 20px;
+      background: #eee7dc;
     }
 
     .hero h1 {
-      font-size: 64px;
-      margin-bottom: 15px;
+      font-size: 70px;
+      margin: 0 0 20px;
+      letter-spacing: 2px;
     }
 
     .hero p {
       font-size: 21px;
-      max-width: 650px;
+      max-width: 700px;
       margin: auto;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .button {
@@ -63,24 +83,84 @@
       color: white;
       text-decoration: none;
       font-family: Arial, sans-serif;
-      border-radius: 3px;
+      border-radius: 4px;
+    }
+
+    .button:hover {
+      opacity: 0.85;
     }
 
     section {
-      padding: 70px 10%;
+      padding: 80px 10%;
       text-align: center;
     }
 
     section h2 {
-      font-size: 38px;
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      max-width: 750px;
+      margin: auto;
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin-top: 45px;
+    }
+
+    .card {
+      background: white;
+      width: 260px;
+      padding: 30px 25px;
+      border-radius: 6px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      font-size: 23px;
+      margin-top: 0;
+    }
+
+    .authors {
+      background: #eee7dc;
+    }
+
+    .contact {
+      background: white;
     }
 
     footer {
       background: #211f1c;
       color: white;
       text-align: center;
-      padding: 30px;
+      padding: 35px 20px;
       font-family: Arial, sans-serif;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav a {
+        margin: 0 7px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
@@ -88,17 +168,26 @@
 <body>
 
 <header>
+
   <div class="logo">ÎNTRE RÂNDURI</div>
 
   <nav>
-    <a href="#">Acasă</a>
+    <a href="#acasa">Acasă</a>
     <a href="#carti">Cărți</a>
     <a href="#autori">Pentru autori</a>
+    <a href="#servicii">Servicii</a>
+    <a href="#contact">Contact</a>
   </nav>
+
 </header>
 
-<div class="hero">
+
+<!-- ACASĂ -->
+
+<section class="hero" id="acasa">
+
   <div>
+
     <h1>Între Rânduri</h1>
 
     <p>
@@ -106,34 +195,145 @@
       autorilor curajoși și cărților care merită descoperite.
     </p>
 
-    <a class="button" href="#autori">Trimite manuscrisul</a>
+    <a class="button" href="#autori">
+      Trimite manuscrisul
+    </a>
+
   </div>
-</div>
+
+</section>
+
+
+<!-- CĂRȚI -->
 
 <section id="carti">
+
   <h2>Cărți</h2>
 
   <p>
-    Descoperă povești originale de la autori aflați
-    la începutul drumului literar.
+    Descoperă povești originale și autori aflați
+    la începutul sau în dezvoltarea drumului lor literar.
   </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>În curând</h3>
+      <p>
+        Primele titluri publicate de Între Rânduri
+        vor apărea aici.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Autori noi</h3>
+      <p>
+        Descoperă voci literare noi și povești
+        care merită să fie citite.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Lecturi originale</h3>
+      <p>
+        Cărți digitale create pentru cititori
+        care caută povești diferite.
+      </p>
+    </div>
+
+  </div>
+
 </section>
 
-<section id="autori">
+
+<!-- PENTRU AUTORI -->
+
+<section class="authors" id="autori">
+
   <h2>Pentru autori</h2>
 
   <p>
-    Ai scris o carte? Între Rânduri îți oferă un spațiu
-    în care povestea ta poate începe să ajungă la cititori.
+    Ai scris o carte și vrei să o faci cunoscută?
+    Trimite-ne manuscrisul, iar echipa Între Rânduri
+    îl poate analiza și îți poate oferi informații
+    despre următorii pași.
   </p>
 
-  <a class="button" href="mailto:contact@intreranduri.ro">
-    Contactează-ne
+  <a class="button" href="#contact">
+    Vreau să public
+
   </a>
+
 </section>
 
+
+<!-- SERVICII -->
+
+<section id="servicii">
+
+  <h2>Servicii editoriale</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Evaluare manuscris</h3>
+      <p>
+        Analizăm manuscrisul și oferim feedback
+        asupra textului.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Corectură</h3>
+      <p>
+        Verificarea greșelilor de ortografie,
+        punctuație și exprimare.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Editare</h3>
+      <p>
+        Îmbunătățirea textului, structurii și
+        clarității poveștii.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Pregătire pentru publicare</h3>
+      <p>
+        Pregătirea materialului pentru transformarea
+        lui într-o carte digitală.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+  <h2>Contact</h2>
+
+  <p>
+    Pentru întrebări despre manuscrise, servicii
+    editoriale sau colaborări, ne poți contacta.
+  </p>
+
+  <a class="button" href="mailto:ADRESA-TA-DE-EMAIL">
+    Trimite un e-mail
+  </a>
+
+</section>
+
+
 <footer>
+
   © 2026 Între Rânduri — Editură digitală
+
 </footer>
 
 </body>

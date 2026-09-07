@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coș | Între Rânduri</title>
+
+<style>
+:root {
+    --black: #04050c;
+    --black-soft: #080b18;
+    --navy: #0b1430;
+    --navy-light: #142653;
+    --blue: #315db4;
+    --blue-light: #7295e8;
+    --purple: #4c327c;
+    --purple-light: #a88ad8;
+    --lavender: #d8c9f3;
+    --gold: #d8b765;
+    --gold-light: #f1d995;
+    --white: #ffffff;
+    --white-soft: #d9dce8;
+    --line: rgba(216, 183, 101, 0.35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(76, 50, 124, 0.22), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(49, 93, 180, 0.16), transparent 30%),
+        var(--black);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* STARS */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(216,183,101,.6) 1px, transparent 1px),
+        radial-gradient(circle, rgba(216,201,243,.7) 1px, transparent 1px);
+    background-size: 90px 90px, 130px 130px, 170px 170px;
+    background-position: 10px 20px, 50px 70px, 100px 30px;
+    opacity: .35;
+    z-index: 0;
+}
+
+/* NAVBAR */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(4, 5, 12, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+}
+
+.logo {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--white-soft);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--gold-light);
+}
+
+.cart-button {
+    padding: 10px 15px;
+    border: 1px solid var(--gold);
+    border-radius: 25px;
+    color: var(--gold-light) !important;
+}
+
+.cart-count {
+    margin-left: 5px;
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    z-index: 1;
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px 50px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.small-title {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 8vw, 78px);
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    text-shadow: 0 0 30px rgba(216,183,101,.2);
+}
+
+.hero p {
+    color: var(--white-soft);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* CART */
+
+.cart-section {
+    position: relative;
+    z-index: 1;
+    padding: 40px 7% 110px;
+}
+
+.cart-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.cart-box {
+    background:
+        linear-gradient(145deg, rgba(20,38,83,.72), rgba(8,11,24,.96));
+    border: 1px solid rgba(168,138,216,.35);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+/* EMPTY CART */
+
+.empty-cart {
+    text-align: center;
+    padding: 80px 30px;
+}
+
+.empty-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 25px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    background: rgba(76,50,124,.2);
+    box-shadow: 0 0 35px rgba(76,50,124,.2);
+}
+
+.empty-cart h2 {
+    color: var(--gold-light);
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.empty-cart p {
+    color: var(--white-soft);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: auto;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    color: var(--black);
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(216,183,101,.25);
+}
+
+/* FUTURE CART */
+
+.future-cart {
+    margin-top: 35px;
+    display: none;
+}
+
+.future-cart.active {
+    display: block;
+}
+
+.cart-header {
+    padding: 25px 30px;
+    border-bottom: 1px solid rgba(216,183,101,.2);
+}
+
+.cart-header h2 {
+    color: var(--gold-light);
+    font-size: 27px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px 30px;
+    border-bottom: 1px solid rgba(168,138,216,.18);
+}
+
+.book-cover {
+    width: 75px;
+    height: 105px;
+    border-radius: 7px;
+    background:
+        linear-gradient(145deg, var(--purple), var(--navy-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-light);
+    font-size: 12px;
+    text-align: center;
+    padding: 8px;
+}
+
+.book-info {
+    flex: 1;
+}
+
+.book-info h3 {
+    color: var(--white);
+    margin-bottom: 8px;
+}
+
+.book-info p {
+    color: var(--white-soft);
+    font-size: 14px;
+}
+
+.book-price {
+    color: var(--gold-light);
+    font-size: 18px;
+}
+
+.remove-button {
+    border: 1px solid rgba(216,183,101,.4);
+    background: transparent;
+    color: var(--white-soft);
+    padding: 8px 13px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.remove-button:hover {
+    color: var(--gold-light);
+    border-color: var(--gold);
+}
+
+/* TOTAL */
+
+.cart-total {
+    padding: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.total-box {
+    width: 320px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: var(--white-soft);
+}
+
+.total-row.final {
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--gold-light);
+    font-size: 22px;
+}
+
+.checkout-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: var(--black);
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+/* DIGITAL INFO */
+
+.digital-info {
+    max-width: 1100px;
+    margin: 40px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.info-card {
+    text-align: center;
+    padding: 25px 20px;
+    background: rgba(8,11,24,.75);
+    border: 1px solid rgba(168,138,216,.25);
+    border-radius: 16px;
+}
+
+.info-card .icon {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.info-card h3 {
+    color: var(--gold-light);
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    color: var(--white-soft);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+
+footer {
+    position: relative;
+    z-index: 1;
+    padding: 45px 7%;
+    border-top: 1px solid var(--line);
+    background: rgba(4,5,12,.95);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.footer-logo span {
+    color: var(--gold);
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--white-soft);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: var(--gold-light);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    color: #8e92a3;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    header {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .digital-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 70px 20px 40px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .cart-section {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .empty-cart {
+        padding: 60px 20px;
+    }
+
+    .empty-cart h2 {
+        font-size: 28px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    .cart-total {
+        justify-content: stretch;
+    }
+
+    .total-box {
+        width: 100%;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="index.html" class="logo">
+        ÎNTRE <span>RÂNDURI</span>
+    </a>
+
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="biblioteca.html">Bibliotecă</a>
+        <a href="autori.html">Autori</a>
+        <a href="servicii.html">Servicii</a>
+        <a href="contact.html">Contact</a>
+        <a href="manuscris.html">Manuscris</a>
+
+        <a href="cos.html" class="cart-button">
+            🛒 Coș <span class="cart-count">0</span>
+        </a>
+    </nav>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            ÎNTRE RÂNDURI · COȘUL TĂU
+        </div>
+
+        <h1>Coșul tău.</h1>
+
+        <p>
+            Poveștile pe care alegi să le păstrezi aproape,
+            într-un singur loc.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="cart-section">
+
+    <div class="cart-container">
+
+        <div class="cart-box">
+
+            <!-- COȘ GOL -->
+
+            <div class="empty-cart">
+
+                <div class="empty-icon">
+                    🛒
+                </div>
+
+                <h2>Coșul tău este gol</h2>
+
+                <p>
+                    Încă nu ai adăugat nicio carte.
+                    Descoperă biblioteca Între Rânduri și
+                    găsește următoarea poveste pe care vrei
+                    să o citești.
+                </p>
+
+                <a href="biblioteca.html" class="button">
+                    DESCOPERĂ BIBLIOTECA
+                </a>
+
+            </div>
+
+
+            <!-- STRUCTURA PENTRU CĂRȚI -->
+
+            <div class="future-cart">
+
+                <div class="cart-header">
+                    <h2>Cărțile tale</h2>
+                </div>
+
+                <div class="cart-item">
+
+                    <div class="book-cover">
+                        COPERTĂ
+                    </div>
+
+                    <div class="book-info">
+
+                        <h3>Titlul cărții</h3>
+
+                        <p>
+                            Autor · Carte digitală
+                        </p>
+
+                    </div>
+
+                    <div class="book-price">
+                        0,00 lei
+                    </div>
+
+                    <button class="remove-button">
+                        Elimină
+                    </button>
+
+                </div>
+
+
+                <div class="cart-total">
+
+                    <div class="total-box">
+
+                        <div class="total-row">
+                            <span>Subtotal</span>
+                            <span>0,00 lei</span>
+                        </div>
+
+                        <div class="total-row">
+                            <span>Livrare</span>
+                            <span>Digital</span>
+                        </div>
+
+                        <div class="total-row final">
+                            <span>Total</span>
+                            <span>0,00 lei</span>
+                        </div>
+
+                        <button class="checkout-button">
+                            FINALIZEAZĂ COMANDA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BENEFICII -->
+
+        <div class="digital-info">
+
+            <div class="info-card">
+
+                <div class="icon">📱</div>
+
+                <h3>Digital</h3>
+
+                <p>
+                    Cărțile sunt concepute pentru citire
+                    digitală, fără transport fizic.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="icon">📖</div>
+
+                <h3>Lectură online</h3>
+
+                <p>
+                    În versiunea finală a platformei,
+                    cărțile cumpărate vor putea fi accesate
+                    online.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="icon">✦</div>
+
+                <h3>Între Rânduri</h3>
+
+                <p>
+                    Un spațiu construit pentru povești,
+                    autori și cititori.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <div class="footer-logo">
+            ÎNTRE <span>RÂNDURI</span>
+        </div>
+
+        <div class="footer-links">
+
+            <a href="index.html">Acasă</a>
+            <a href="biblioteca.html">Bibliotecă</a>
+            <a href="autori.html">Autori</a>
+            <a href="servicii.html">Servicii</a>
+            <a href="contact.html">Contact</a>
+            <a href="manuscris.html">Manuscris</a>
+            <a href="cos.html">Coș</a>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Între Rânduri · Toate drepturile rezervate.
+    </div>
+
+</footer>
+
+</body>
+</html>

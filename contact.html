@@ -230,6 +230,7 @@ nav a:hover {
     color: var(--white-soft);
     text-decoration: none;
     line-height: 1.5;
+    word-break: break-word;
 }
 
 .contact-item a:hover {
@@ -499,7 +500,7 @@ footer {
         <a href="manuscris.html">Manuscris</a>
 
         <a href="cos.html" class="cart-button">
-            🛒 Coș <span class="cart-count">0</span>
+            🛒 Coș <span class="cart-count" id="cart-count">0</span>
         </a>
     </nav>
 
@@ -553,8 +554,8 @@ footer {
                 <div>
                     <h3>Email</h3>
 
-                    <a href="mailto:ADRESA-TA-DE-EMAIL">
-                        ADRESA-TA-DE-EMAIL
+                    <a href="mailto:printre.randuri.oficial@gmail.com">
+                        printre.randuri.oficial@gmail.com
                     </a>
                 </div>
 
@@ -568,9 +569,9 @@ footer {
                 <div>
                     <h3>Telefon</h3>
 
-                    <p>
-                        07XX XXX XXX
-                    </p>
+                    <a href="tel:+40755484062">
+                        0755 484 062
+                    </a>
                 </div>
 
             </div>
@@ -621,9 +622,10 @@ footer {
             </p>
 
 
-            <form action="mailto:ADRESA-TA-DE-EMAIL"
-                  method="post"
-                  enctype="text/plain">
+            <form
+                action="mailto:printre.randuri.oficial@gmail.com"
+                method="post"
+                enctype="text/plain">
 
                 <div class="form-group">
 
@@ -756,6 +758,36 @@ footer {
     </div>
 
 </footer>
+
+
+<script>
+
+/* ==========================================
+   SINCRONIZARE COȘ
+========================================== */
+
+const CART_KEY = "intreRanduriCart";
+
+function updateCartCount() {
+
+    let cart = [];
+
+    try {
+        cart = JSON.parse(
+            localStorage.getItem(CART_KEY)
+        ) || [];
+    } catch (error) {
+        cart = [];
+    }
+
+    document.querySelectorAll(".cart-count").forEach(element => {
+        element.innerText = cart.length;
+    });
+}
+
+updateCartCount();
+
+</script>
 
 </body>
 </html>

@@ -9,10 +9,6 @@
 
     <style>
 
-        /* =========================================
-           ÎNTRE RÂNDURI — BIBLIOTECA
-           ========================================= */
-
         :root {
             --dark: #070b1d;
             --dark-blue: #0d1638;
@@ -38,16 +34,29 @@
 
         body {
             font-family: Georgia, "Times New Roman", serif;
+
             background:
-                radial-gradient(circle at 15% 10%, rgba(70, 40, 110, 0.5), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(25, 60, 130, 0.35), transparent 25%),
-                linear-gradient(135deg, #070b1d, #10193d, #21122f);
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(70, 40, 110, 0.5),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(25, 60, 130, 0.35),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    135deg,
+                    #070b1d,
+                    #10193d,
+                    #21122f
+                );
 
             color: var(--white);
             min-height: 100vh;
             overflow-x: hidden;
         }
-
 
         /* =========================================
            STELUȚE
@@ -110,16 +119,13 @@
 
         }
 
-
         /* =========================================
            NAVBAR
            ========================================= */
 
         header {
-
             position: sticky;
             top: 0;
-
             width: 100%;
             z-index: 1000;
 
@@ -132,70 +138,53 @@
             background: rgba(7, 11, 29, 0.94);
             backdrop-filter: blur(15px);
 
-            border-bottom: 1px solid rgba(212, 175, 99, 0.35);
-
+            border-bottom:
+                1px solid rgba(212, 175, 99, 0.35);
         }
 
-
         .logo {
-
             color: white;
             font-size: 22px;
             letter-spacing: 4px;
-
+            text-decoration: none;
         }
 
         .logo span {
-
             color: var(--gold);
-
         }
 
-
         nav {
-
             display: flex;
             align-items: center;
             gap: 22px;
-
         }
 
-
         nav a {
-
             color: white;
-
             text-decoration: none;
 
             font-family: Arial, sans-serif;
-
             font-size: 13px;
-
             letter-spacing: 0.8px;
 
             transition: 0.3s;
-
         }
-
 
         nav a:hover {
-
             color: var(--gold-light);
-
         }
-
 
         /* =========================================
            COȘ
            ========================================= */
 
         .cart {
-
             position: relative;
 
             background: rgba(255,255,255,0.08);
 
-            border: 1px solid rgba(212,175,99,0.5);
+            border:
+                1px solid rgba(212,175,99,0.5);
 
             padding: 9px 14px;
 
@@ -204,20 +193,14 @@
             cursor: pointer;
 
             transition: 0.3s;
-
         }
-
 
         .cart:hover {
-
             background: var(--gold);
             color: var(--dark);
-
         }
 
-
         .cart-count {
-
             background: var(--gold);
 
             color: var(--dark);
@@ -229,27 +212,19 @@
             font-size: 11px;
 
             margin-left: 5px;
-
         }
-
 
         /* =========================================
            HERO
            ========================================= */
 
         .hero {
-
             text-align: center;
-
             padding: 110px 20px 80px;
-
             position: relative;
-
         }
 
-
         .chapter {
-
             color: var(--gold);
 
             text-transform: uppercase;
@@ -261,32 +236,22 @@
             letter-spacing: 5px;
 
             margin-bottom: 25px;
-
         }
 
-
         .hero h1 {
-
             font-size: clamp(55px, 8vw, 100px);
-
             font-weight: normal;
 
             color: var(--white);
 
             margin-bottom: 20px;
-
         }
-
 
         .hero h1 span {
-
             color: var(--gold);
-
         }
 
-
         .hero p {
-
             max-width: 700px;
 
             margin: auto;
@@ -296,12 +261,9 @@
             line-height: 1.8;
 
             color: var(--text);
-
         }
 
-
         .ornament {
-
             color: var(--gold);
 
             font-size: 24px;
@@ -309,42 +271,34 @@
             letter-spacing: 12px;
 
             margin-top: 35px;
-
         }
-
 
         /* =========================================
            CĂUTARE
            ========================================= */
 
         .search-section {
-
             max-width: 850px;
 
             margin: auto;
 
             padding: 0 20px 80px;
-
         }
 
-
         .search-box {
-
             display: flex;
 
             background: rgba(255,255,255,0.08);
 
-            border: 1px solid rgba(212,175,99,0.45);
+            border:
+                1px solid rgba(212,175,99,0.45);
 
             padding: 7px;
 
             border-radius: 6px;
-
         }
 
-
         .search-box input {
-
             flex: 1;
 
             background: transparent;
@@ -360,19 +314,13 @@
             font-family: Georgia, serif;
 
             font-size: 16px;
-
         }
-
 
         .search-box input::placeholder {
-
             color: #a8aec5;
-
         }
 
-
         .search-box button {
-
             border: none;
 
             background: var(--gold);
@@ -388,50 +336,38 @@
             font-family: Arial, sans-serif;
 
             transition: 0.3s;
-
         }
-
 
         .search-box button:hover {
-
             background: var(--gold-light);
-
         }
-
 
         /* =========================================
            CATEGORII
            ========================================= */
 
         .categories {
-
             padding: 80px 8%;
 
             background:
-
                 linear-gradient(
                     rgba(5, 8, 22, 0.88),
                     rgba(17, 16, 45, 0.9)
                 );
 
-            border-top: 1px solid rgba(212,175,99,0.2);
+            border-top:
+                1px solid rgba(212,175,99,0.2);
 
-            border-bottom: 1px solid rgba(212,175,99,0.2);
-
+            border-bottom:
+                1px solid rgba(212,175,99,0.2);
         }
-
 
         .section-title {
-
             text-align: center;
-
             margin-bottom: 50px;
-
         }
 
-
         .section-title small {
-
             color: var(--gold);
 
             font-family: Arial, sans-serif;
@@ -439,32 +375,23 @@
             letter-spacing: 4px;
 
             text-transform: uppercase;
-
         }
 
-
         .section-title h2 {
-
             font-size: 50px;
 
             font-weight: normal;
 
             margin-top: 15px;
-
         }
 
-
         .section-title p {
-
             color: var(--text);
 
             margin-top: 15px;
-
         }
 
-
         .category-grid {
-
             max-width: 1200px;
 
             margin: auto;
@@ -475,18 +402,14 @@
                 repeat(auto-fit, minmax(210px, 1fr));
 
             gap: 20px;
-
         }
 
-
         .category {
-
             padding: 30px 20px;
 
             text-align: center;
 
             background:
-
                 linear-gradient(
                     145deg,
                     rgba(30, 45, 95, 0.65),
@@ -507,35 +430,37 @@
             flex-direction: column;
 
             justify-content: center;
-
         }
 
-
         .category:hover {
-
             transform: translateY(-8px);
 
             border-color: var(--gold);
 
             box-shadow:
-
-                0 15px 35px
-                rgba(0,0,0,0.35);
-
+                0 15px 35px rgba(0,0,0,0.35);
         }
 
+        .category.active {
+            border-color: var(--gold);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(50, 65, 125, 0.8),
+                    rgba(82, 45, 105, 0.7)
+                );
+
+            box-shadow:
+                0 10px 30px rgba(212,175,99,0.12);
+        }
 
         .category-icon {
-
             font-size: 38px;
-
             margin-bottom: 15px;
-
         }
 
-
         .category h3 {
-
             color: var(--gold-light);
 
             font-size: 21px;
@@ -543,36 +468,27 @@
             font-weight: normal;
 
             margin-bottom: 10px;
-
         }
 
-
         .category p {
-
             color: var(--text);
 
             font-size: 14px;
 
             line-height: 1.6;
-
         }
-
 
         /* =========================================
            FILTRE
            ========================================= */
 
         .filters {
-
             padding: 70px 8% 30px;
 
             text-align: center;
-
         }
 
-
         .filter-buttons {
-
             display: flex;
 
             justify-content: center;
@@ -582,15 +498,13 @@
             gap: 10px;
 
             margin-top: 25px;
-
         }
 
-
         .filter-btn {
-
             background: transparent;
 
-            border: 1px solid rgba(212,175,99,0.5);
+            border:
+                1px solid rgba(212,175,99,0.5);
 
             color: white;
 
@@ -603,33 +517,24 @@
             font-size: 12px;
 
             transition: 0.3s;
-
         }
-
 
         .filter-btn:hover,
         .filter-btn.active {
-
             background: var(--gold);
 
             color: var(--dark);
-
         }
-
 
         /* =========================================
            CĂRȚI
            ========================================= */
 
         .books {
-
             padding: 40px 8% 100px;
-
         }
 
-
         .books-grid {
-
             max-width: 1200px;
 
             margin: auto;
@@ -640,226 +545,65 @@
                 repeat(auto-fit, minmax(240px, 1fr));
 
             gap: 35px;
-
         }
 
+        /* =========================================
+           MESAJ FĂRĂ CĂRȚI
+           ========================================= */
 
-        .book {
+        .empty-library {
+            max-width: 800px;
 
-            background:
+            margin: 20px auto 0;
 
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.09),
-                    rgba(255,255,255,0.03)
-                );
-
-            border:
-                1px solid rgba(212,175,99,0.22);
-
-            padding: 20px;
-
-            transition: 0.4s;
-
-        }
-
-
-        .book:hover {
-
-            transform: translateY(-8px);
-
-            border-color: var(--gold);
-
-        }
-
-
-        .cover {
-
-            height: 320px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
+            padding: 70px 30px;
 
             text-align: center;
 
-            padding: 25px;
+            border:
+                1px solid rgba(212,175,99,0.25);
 
-            margin-bottom: 20px;
-
-            box-shadow:
-                8px 15px 30px rgba(0,0,0,0.35);
-
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.07),
+                    rgba(255,255,255,0.025)
+                );
         }
 
+        .empty-library .empty-icon {
+            font-size: 48px;
 
-        .cover h3 {
+            margin-bottom: 20px;
+        }
 
-            color: white;
+        .empty-library h3 {
+            color: var(--gold-light);
 
             font-size: 28px;
 
             font-weight: normal;
 
-            line-height: 1.3;
-
-        }
-
-
-        .cover-one {
-
-            background:
-                linear-gradient(145deg,
-                #17123d,
-                #553070,
-                #9c6b41);
-
-        }
-
-
-        .cover-two {
-
-            background:
-                linear-gradient(145deg,
-                #071d35,
-                #194f73,
-                #b18b50);
-
-        }
-
-
-        .cover-three {
-
-            background:
-                linear-gradient(145deg,
-                #2d1026,
-                #6e2149,
-                #c79b5a);
-
-        }
-
-
-        .cover-four {
-
-            background:
-                linear-gradient(145deg,
-                #131313,
-                #292041,
-                #7d5c9b);
-
-        }
-
-
-        .book-category {
-
-            color: var(--gold);
-
-            font-family: Arial, sans-serif;
-
-            font-size: 11px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 2px;
-
-        }
-
-
-        .book h3 {
-
-            font-size: 24px;
-
-            font-weight: normal;
-
-            margin: 10px 0;
-
-        }
-
-
-        .author {
-
-            color: #b7bdd2;
-
-            font-size: 14px;
-
             margin-bottom: 15px;
-
         }
 
-
-        .book-description {
-
+        .empty-library p {
             color: var(--text);
 
-            font-size: 14px;
+            font-size: 15px;
 
-            line-height: 1.6;
+            line-height: 1.8;
 
-            min-height: 70px;
+            max-width: 600px;
 
+            margin: auto;
         }
-
-
-        .book-bottom {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            margin-top: 20px;
-
-        }
-
-
-        .price {
-
-            color: var(--gold-light);
-
-            font-size: 19px;
-
-        }
-
-
-        .add-cart {
-
-            background: var(--gold);
-
-            border: none;
-
-            color: var(--dark);
-
-            padding: 10px 14px;
-
-            cursor: pointer;
-
-            font-family: Arial, sans-serif;
-
-            font-size: 12px;
-
-            font-weight: bold;
-
-            transition: 0.3s;
-
-        }
-
-
-        .add-cart:hover {
-
-            background: white;
-
-        }
-
 
         /* =========================================
            FOOTER
            ========================================= */
 
         footer {
-
             text-align: center;
 
             padding: 60px 20px;
@@ -868,38 +612,27 @@
 
             border-top:
                 1px solid rgba(212,175,99,0.25);
-
         }
 
-
         .footer-logo {
-
             color: white;
 
             font-size: 25px;
 
             letter-spacing: 5px;
-
         }
-
 
         .footer-logo span {
-
             color: var(--gold);
-
         }
 
-
         footer p {
-
             color: #9298ad;
 
             margin-top: 20px;
 
             font-size: 13px;
-
         }
-
 
         /* =========================================
            RESPONSIVE
@@ -908,65 +641,43 @@
         @media (max-width: 850px) {
 
             header {
-
                 flex-direction: column;
 
                 gap: 15px;
 
                 padding: 15px;
-
             }
 
-
             nav {
-
                 justify-content: center;
 
                 flex-wrap: wrap;
 
                 gap: 12px;
-
             }
-
 
             .hero {
-
                 padding-top: 80px;
-
             }
-
         }
-
 
         @media (max-width: 500px) {
 
             .hero h1 {
-
                 font-size: 55px;
-
             }
-
 
             .section-title h2 {
-
                 font-size: 38px;
-
             }
-
 
             .search-box {
-
                 flex-direction: column;
-
             }
-
 
             .search-box button {
-
                 padding: 14px;
-
             }
-
         }
 
     </style>
@@ -986,23 +697,20 @@
     <div class="star">✦</div>
 
 
-
-    <!-- =========================================
-         NAVBAR
-         ========================================= -->
+    <!-- NAVBAR -->
 
     <header>
 
-        <div class="logo">
-
+        <a href="index.html" class="logo">
             ÎNTRE <span>RÂNDURI</span>
-
-        </div>
+        </a>
 
 
         <nav>
 
-            <a href="index.html">Acasă</a>
+            <a href="index.html">
+                Acasă
+            </a>
 
             <a href="biblioteca.html">
                 Bibliotecă
@@ -1024,12 +732,14 @@
                 Manuscris
             </a>
 
-
             <a href="cos.html" class="cart">
 
                 🛒 Coș
 
-                <span class="cart-count" id="cart-count">
+                <span
+                    class="cart-count"
+                    id="cart-count"
+                >
                     0
                 </span>
 
@@ -1040,70 +750,46 @@
     </header>
 
 
-
-    <!-- =========================================
-         HERO
-         ========================================= -->
+    <!-- HERO -->
 
     <section class="hero">
 
         <div class="chapter">
-
             Capitolul III · Biblioteca
-
         </div>
 
-
         <h1>
-
             Universul
             <span>Între Rânduri</span>
-
         </h1>
 
-
         <p>
-
             Fiecare carte este o ușă.
             Unele duc către lumi pe care nu le-ai văzut
             niciodată. Altele te duc mai aproape de tine.
-
         </p>
 
-
         <div class="ornament">
-
             ✦ · ✧ · ✦
-
         </div>
 
     </section>
 
 
-
-    <!-- =========================================
-         CĂUTARE
-         ========================================= -->
+    <!-- CĂUTARE -->
 
     <section class="search-section">
 
         <div class="search-box">
 
             <input
-
                 type="text"
-
                 id="searchInput"
-
                 placeholder="Caută o carte, un autor sau un univers..."
-
             >
 
-
             <button onclick="searchBooks()">
-
                 CAUTĂ
-
             </button>
 
         </div>
@@ -1111,45 +797,35 @@
     </section>
 
 
-
-    <!-- =========================================
-         CATEGORII
-         ========================================= -->
+    <!-- CATEGORII -->
 
     <section class="categories">
 
         <div class="section-title">
 
             <small>
-
                 Alege o lume
-
             </small>
 
-
             <h2>
-
                 Explorează categoriile
-
             </h2>
 
-
             <p>
-
                 De la lumi fantastice până la istorie,
                 poezie și știință.
-
             </p>
 
         </div>
 
 
-
         <div class="category-grid">
 
-
-            <div class="category" onclick="filterBooks('Fantasy')">
-
+            <div
+                class="category"
+                data-category="Fantasy"
+                onclick="filterBooks('Fantasy')"
+            >
                 <div class="category-icon">🐉</div>
 
                 <h3>Fantasy</h3>
@@ -1158,13 +834,14 @@
                     Magie, regate, creaturi și lumi
                     care există dincolo de realitate.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Dark Romance')">
-
+            <div
+                class="category"
+                data-category="Dark Romance"
+                onclick="filterBooks('Dark Romance')"
+            >
                 <div class="category-icon">🌙</div>
 
                 <h3>Dark Romance</h3>
@@ -1173,13 +850,14 @@
                     Iubiri intense, personaje complexe
                     și povești întunecate.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Romance')">
-
+            <div
+                class="category"
+                data-category="Romance"
+                onclick="filterBooks('Romance')"
+            >
                 <div class="category-icon">❤️</div>
 
                 <h3>Romance</h3>
@@ -1188,13 +866,14 @@
                     Emoții, relații și povești
                     care rămân în suflet.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Science Fiction')">
-
+            <div
+                class="category"
+                data-category="Science Fiction"
+                onclick="filterBooks('Science Fiction')"
+            >
                 <div class="category-icon">🚀</div>
 
                 <h3>Science Fiction</h3>
@@ -1203,13 +882,14 @@
                     Viitor, tehnologie, spațiu
                     și lumi necunoscute.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Thriller')">
-
+            <div
+                class="category"
+                data-category="Thriller"
+                onclick="filterBooks('Thriller')"
+            >
                 <div class="category-icon">🔎</div>
 
                 <h3>Thriller</h3>
@@ -1217,13 +897,14 @@
                 <p>
                     Suspans, mistere și secrete.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Horror')">
-
+            <div
+                class="category"
+                data-category="Horror"
+                onclick="filterBooks('Horror')"
+            >
                 <div class="category-icon">👻</div>
 
                 <h3>Horror</h3>
@@ -1231,13 +912,14 @@
                 <p>
                     Povești întunecate și necunoscut.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Young Adult')">
-
+            <div
+                class="category"
+                data-category="Young Adult"
+                onclick="filterBooks('Young Adult')"
+            >
                 <div class="category-icon">🌸</div>
 
                 <h3>Young Adult</h3>
@@ -1246,13 +928,14 @@
                     Descoperire, prietenie,
                     aventură și adolescență.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Poezie')">
-
+            <div
+                class="category"
+                data-category="Poezie"
+                onclick="filterBooks('Poezie')"
+            >
                 <div class="category-icon">✒️</div>
 
                 <h3>Poezie</h3>
@@ -1260,13 +943,14 @@
                 <p>
                     Emoții transformate în cuvinte.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Istorie')">
-
+            <div
+                class="category"
+                data-category="Istorie"
+                onclick="filterBooks('Istorie')"
+            >
                 <div class="category-icon">🏛️</div>
 
                 <h3>Istorie</h3>
@@ -1274,13 +958,14 @@
                 <p>
                     O călătorie prin trecut.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Știință')">
-
+            <div
+                class="category"
+                data-category="Știință"
+                onclick="filterBooks('Știință')"
+            >
                 <div class="category-icon">🔬</div>
 
                 <h3>Știință</h3>
@@ -1288,13 +973,14 @@
                 <p>
                     Descoperă universul și lumea.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Psihologie')">
-
+            <div
+                class="category"
+                data-category="Psihologie"
+                onclick="filterBooks('Psihologie')"
+            >
                 <div class="category-icon">🧠</div>
 
                 <h3>Psihologie</h3>
@@ -1302,13 +988,14 @@
                 <p>
                     Mintea, emoțiile și comportamentul.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Business')">
-
+            <div
+                class="category"
+                data-category="Business"
+                onclick="filterBooks('Business')"
+            >
                 <div class="category-icon">💼</div>
 
                 <h3>Business</h3>
@@ -1316,13 +1003,14 @@
                 <p>
                     Idei, economie și antreprenoriat.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Călătorii')">
-
+            <div
+                class="category"
+                data-category="Călătorii"
+                onclick="filterBooks('Călătorii')"
+            >
                 <div class="category-icon">🌍</div>
 
                 <h3>Călătorii</h3>
@@ -1330,13 +1018,14 @@
                 <p>
                     Lumea văzută prin alte povești.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Artă')">
-
+            <div
+                class="category"
+                data-category="Artă & Cultură"
+                onclick="filterBooks('Artă & Cultură')"
+            >
                 <div class="category-icon">🎨</div>
 
                 <h3>Artă & Cultură</h3>
@@ -1344,13 +1033,14 @@
                 <p>
                     Creativitate, cultură și inspirație.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Biografii')">
-
+            <div
+                class="category"
+                data-category="Biografii"
+                onclick="filterBooks('Biografii')"
+            >
                 <div class="category-icon">👤</div>
 
                 <h3>Biografii</h3>
@@ -1359,13 +1049,14 @@
                     Viețile oamenilor care au
                     lăsat o urmă.
                 </p>
-
             </div>
 
 
-
-            <div class="category" onclick="filterBooks('Beletristică')">
-
+            <div
+                class="category"
+                data-category="Beletristică"
+                onclick="filterBooks('Beletristică')"
+            >
                 <div class="category-icon">📚</div>
 
                 <h3>Beletristică</h3>
@@ -1374,34 +1065,25 @@
                     Povești despre oameni,
                     lumi și vieți.
                 </p>
-
             </div>
-
 
         </div>
 
     </section>
 
 
-
-    <!-- =========================================
-         FILTRE
-         ========================================= -->
+    <!-- FILTRE -->
 
     <section class="filters">
 
         <div class="section-title">
 
             <small>
-
                 Biblioteca
-
             </small>
 
             <h2>
-
                 Toate poveștile
-
             </h2>
 
         </div>
@@ -1416,14 +1098,12 @@
                 TOATE
             </button>
 
-
             <button
                 class="filter-btn"
                 onclick="filterBooks('Fantasy')"
             >
                 FANTASY
             </button>
-
 
             <button
                 class="filter-btn"
@@ -1432,14 +1112,12 @@
                 DARK ROMANCE
             </button>
 
-
             <button
                 class="filter-btn"
                 onclick="filterBooks('Romance')"
             >
                 ROMANCE
             </button>
-
 
             <button
                 class="filter-btn"
@@ -1448,14 +1126,12 @@
                 THRILLER
             </button>
 
-
             <button
                 class="filter-btn"
                 onclick="filterBooks('Poezie')"
             >
                 POEZIE
             </button>
-
 
             <button
                 class="filter-btn"
@@ -1469,406 +1145,338 @@
     </section>
 
 
-
-    <!-- =========================================
-         CĂRȚI
-         ========================================= -->
+    <!-- CĂRȚI -->
 
     <section class="books">
 
-        <div class="books-grid" id="booksGrid">
+        <div
+            class="books-grid"
+            id="booksGrid"
+        ></div>
 
+        <div
+            class="empty-library"
+            id="emptyLibrary"
+        >
 
-            <!-- CARTEA 1 -->
-
-            <div
-                class="book"
-                data-category="Fantasy"
-            >
-
-                <div class="cover cover-one">
-
-                    <h3>
-                        Prima noastră poveste
-                    </h3>
-
-                </div>
-
-
-                <div class="book-category">
-
-                    Fantasy
-
-                </div>
-
-
-                <h3>
-
-                    Prima noastră poveste
-
-                </h3>
-
-
-                <div class="author">
-
-                    Între Rânduri
-
-                </div>
-
-
-                <p class="book-description">
-
-                    O poveste despre o lume care
-                    așteaptă să fie descoperită.
-
-                </p>
-
-
-                <div class="book-bottom">
-
-                    <div class="price">
-
-                        În curând
-
-                    </div>
-
-
-                    <button
-                        class="add-cart"
-                        onclick="addToCart('Prima noastră poveste')"
-                    >
-
-                        🛒 ADAUGĂ
-
-                    </button>
-
-                </div>
-
+            <div class="empty-icon">
+                📖
             </div>
 
-
-
-            <!-- CARTEA 2 -->
-
-            <div
-                class="book"
-                data-category="Fantasy"
-            >
-
-                <div class="cover cover-two">
-
-                    <h3>
-                        O nouă lume între stele
-                    </h3>
-
-                </div>
-
-
-                <div class="book-category">
-
-                    Fantasy
-
-                </div>
-
-
-                <h3>
-
-                    O nouă lume între stele
-
-                </h3>
-
-
-                <div class="author">
-
-                    Între Rânduri
-
-                </div>
-
-
-                <p class="book-description">
-
-                    Dincolo de stele există întotdeauna
-                    o poveste care așteaptă să înceapă.
-
-                </p>
-
-
-                <div class="book-bottom">
-
-                    <div class="price">
-
-                        În curând
-
-                    </div>
-
-
-                    <button
-                        class="add-cart"
-                        onclick="addToCart('O nouă lume între stele')"
-                    >
-
-                        🛒 ADAUGĂ
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CARTEA 3 -->
-
-            <div
-                class="book"
-                data-category="Dark Romance"
-            >
-
-                <div class="cover cover-three">
-
-                    <h3>
-                        Între umbre
-                    </h3>
-
-                </div>
-
-
-                <div class="book-category">
-
-                    Dark Romance
-
-                </div>
-
-
-                <h3>
-
-                    Între umbre
-
-                </h3>
-
-
-                <div class="author">
-
-                    În curând
-
-                </div>
-
-
-                <p class="book-description">
-
-                    Unele povești de dragoste
-                    încep acolo unde lumina se termină.
-
-                </p>
-
-
-                <div class="book-bottom">
-
-                    <div class="price">
-
-                        În curând
-
-                    </div>
-
-
-                    <button
-                        class="add-cart"
-                        onclick="addToCart('Între umbre')"
-                    >
-
-                        🛒 ADAUGĂ
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- CARTEA 4 -->
-
-            <div
-                class="book"
-                data-category="Thriller"
-            >
-
-                <div class="cover cover-four">
-
-                    <h3>
-                        Ultimul secret
-                    </h3>
-
-                </div>
-
-
-                <div class="book-category">
-
-                    Thriller
-
-                </div>
-
-
-                <h3>
-
-                    Ultimul secret
-
-                </h3>
-
-
-                <div class="author">
-
-                    În curând
-
-                </div>
-
-
-                <p class="book-description">
-
-                    Fiecare secret are un preț.
-                    Uneori, adevărul este cel mai periculos.
-
-                </p>
-
-
-                <div class="book-bottom">
-
-                    <div class="price">
-
-                        În curând
-
-                    </div>
-
-
-                    <button
-                        class="add-cart"
-                        onclick="addToCart('Ultimul secret')"
-                    >
-
-                        🛒 ADAUGĂ
-
-                    </button>
-
-                </div>
-
-            </div>
-
+            <h3>
+                Nu există încă titluri disponibile
+            </h3>
+
+            <p>
+                Biblioteca Între Rânduri este în pregătire.
+                Când prima carte va fi publicată,
+                aceasta va apărea aici în categoria potrivită.
+            </p>
 
         </div>
 
     </section>
 
 
-
-    <!-- =========================================
-         FOOTER
-         ========================================= -->
+    <!-- FOOTER -->
 
     <footer>
 
         <div class="footer-logo">
-
             ÎNTRE <span>RÂNDURI</span>
-
         </div>
 
-
         <p>
-
             Unele povești se termină.
             Cele mai bune rămân între rânduri.
-
         </p>
 
-
         <p>
-
             © 2026 Între Rânduri
-
         </p>
 
     </footer>
 
 
-
-    <!-- =========================================
-         JAVASCRIPT
-         ========================================= -->
+    <!-- JAVASCRIPT -->
 
     <script>
+
+        /* =====================================
+           CĂRȚI
+           
+           Momentan nu avem cărți reale.
+           Mai târziu această zonă va fi înlocuită
+           de baza de date.
+           ===================================== */
+
+        const books = [];
 
 
         /* =====================================
            COȘ
            ===================================== */
 
-        let cartCount = 0;
+        function getCart() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem("intreRanduriCart")
+                ) || [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
 
 
-        function addToCart(bookName) {
+        function saveCart(cart) {
 
-            cartCount++;
+            localStorage.setItem(
+                "intreRanduriCart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        function updateCartCount() {
+
+            const cart = getCart();
+
+            const totalItems = cart.reduce(
+                function(total, item) {
+                    return total + (item.quantity || 1);
+                },
+                0
+            );
 
             document.getElementById("cart-count").innerText =
-                cartCount;
+                totalItems;
+
+        }
+
+
+        function addToCart(book) {
+
+            const cart = getCart();
+
+            const existingBook =
+                cart.find(function(item) {
+                    return item.id === book.id;
+                });
+
+
+            if (existingBook) {
+
+                existingBook.quantity =
+                    (existingBook.quantity || 1) + 1;
+
+            } else {
+
+                cart.push({
+
+                    id: book.id,
+
+                    title: book.title,
+
+                    author: book.author,
+
+                    category: book.category,
+
+                    price: book.price,
+
+                    cover: book.cover,
+
+                    quantity: 1
+
+                });
+
+            }
+
+
+            saveCart(cart);
+
+            updateCartCount();
+
 
             alert(
                 "„" +
-                bookName +
+                book.title +
                 "” a fost adăugată în coș!"
             );
 
         }
 
 
+        /* =====================================
+           AFIȘARE CĂRȚI
+           ===================================== */
+
+        function renderBooks(list) {
+
+            const grid =
+                document.getElementById("booksGrid");
+
+            const empty =
+                document.getElementById("emptyLibrary");
+
+
+            grid.innerHTML = "";
+
+
+            if (list.length === 0) {
+
+                empty.style.display = "block";
+
+                return;
+
+            }
+
+
+            empty.style.display = "none";
+
+
+            list.forEach(function(book) {
+
+                const article =
+                    document.createElement("article");
+
+                article.className = "book";
+
+
+                article.innerHTML = `
+
+                    <div class="cover">
+
+                        <img
+                            src="${book.cover}"
+                            alt="Coperta ${book.title}"
+                            style="
+                                width:100%;
+                                height:100%;
+                                object-fit:cover;
+                            "
+                        >
+
+                    </div>
+
+
+                    <div class="book-category">
+                        ${book.category}
+                    </div>
+
+
+                    <h3>
+                        ${book.title}
+                    </h3>
+
+
+                    <div class="author">
+                        ${book.author}
+                    </div>
+
+
+                    <p class="book-description">
+                        ${book.description}
+                    </p>
+
+
+                    <div class="book-bottom">
+
+                        <div class="price">
+                            ${book.price} lei
+                        </div>
+
+
+                        <button
+                            class="add-cart"
+                            onclick='addToCart(${JSON.stringify(book)})'
+                        >
+                            🛒 ADAUGĂ
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                grid.appendChild(article);
+
+            });
+
+        }
+
 
         /* =====================================
-           FILTRARE CĂRȚI
+           FILTRARE
            ===================================== */
 
         function filterBooks(category) {
 
-            const books =
-                document.querySelectorAll(".book");
+            const categories =
+                document.querySelectorAll(".category");
 
 
-            books.forEach(function(book) {
+            categories.forEach(function(item) {
 
-                const bookCategory =
-                    book.dataset.category;
-
-
-                if (
-                    category === "all" ||
-                    bookCategory === category
-                ) {
-
-                    book.style.display = "block";
-
-                }
-
-                else {
-
-                    book.style.display = "none";
-
-                }
+                item.classList.remove("active");
 
             });
+
+
+            if (category !== "all") {
+
+                const selected =
+                    document.querySelector(
+                        `.category[data-category="${category}"]`
+                    );
+
+
+                if (selected) {
+
+                    selected.classList.add("active");
+
+                }
+
+            }
+
+
+            let filteredBooks;
+
+
+            if (category === "all") {
+
+                filteredBooks = books;
+
+            } else {
+
+                filteredBooks =
+                    books.filter(function(book) {
+
+                        return book.category === category;
+
+                    });
+
+            }
+
+
+            renderBooks(filteredBooks);
 
 
             document
                 .querySelector(".books")
                 .scrollIntoView({
-
                     behavior: "smooth"
-
                 });
 
 
             const buttons =
-                document.querySelectorAll(
-                    ".filter-btn"
-                );
+                document.querySelectorAll(".filter-btn");
 
 
             buttons.forEach(function(button) {
@@ -1877,8 +1485,21 @@
 
             });
 
-        }
 
+            buttons.forEach(function(button) {
+
+                if (
+                    button.innerText.trim().toLowerCase() ===
+                    category.toLowerCase()
+                ) {
+
+                    button.classList.add("active");
+
+                }
+
+            });
+
+        }
 
 
         /* =====================================
@@ -1891,46 +1512,79 @@
                 document
                     .getElementById("searchInput")
                     .value
+                    .trim()
                     .toLowerCase();
 
 
-            const books =
-                document.querySelectorAll(".book");
+            if (!input) {
+
+                renderBooks(books);
+
+                return;
+
+            }
 
 
-            books.forEach(function(book) {
+            const results =
+                books.filter(function(book) {
 
-                const text =
-                    book.innerText.toLowerCase();
+                    const text = (
+
+                        book.title +
+                        " " +
+                        book.author +
+                        " " +
+                        book.category +
+                        " " +
+                        book.description
+
+                    ).toLowerCase();
 
 
-                if (
-                    text.includes(input)
-                ) {
+                    return text.includes(input);
 
-                    book.style.display = "block";
+                });
 
-                }
 
-                else {
-
-                    book.style.display = "none";
-
-                }
-
-            });
+            renderBooks(results);
 
 
             document
                 .querySelector(".books")
                 .scrollIntoView({
-
                     behavior: "smooth"
-
                 });
 
         }
 
+
+        /* =====================================
+           ENTER ÎN CĂUTARE
+           ===================================== */
+
+        document
+            .getElementById("searchInput")
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Enter") {
+
+                        searchBooks();
+
+                    }
+
+                }
+            );
+
+
+        /* =====================================
+           PORNIRE
+           ===================================== */
+
+        updateCartCount();
+
+        renderBooks(books);
 
     </script>
 
